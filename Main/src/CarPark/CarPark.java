@@ -11,7 +11,7 @@ public class CarPark {
     private boolean nightParking;
     private boolean freeParking;
     private int totalLots;
-    private int lotsTaken;
+    private int lotsAvailable;
     private String lotType;
     private String carParkNumber;
 
@@ -24,7 +24,7 @@ public class CarPark {
         nightParking = false;
         freeParking = false;
         totalLots = 0;
-        lotsTaken = 0;
+        lotsAvailable = 0;
         lotType = "";
         carParkNumber = "";
     }
@@ -37,20 +37,31 @@ public class CarPark {
         this.nightParking = nightParking;
         this.freeParking = freeParking;
         totalLots = 0;
-        lotsTaken = 0;
+        lotsAvailable = 0;
         lotType = "";
         this.carParkNumber = carParkNumber;
+    }
+
+    public void update(CarParkUpdate carParkUpdate){
+        totalLots = carParkUpdate.getTotalLots();
+        lotsAvailable = carParkUpdate.getLotsAvailable();
+        lotType = carParkUpdate.getLotType();
+        print();
     }
 
     public void print(){
         System.out.println(String.format("|%15s : %-45s|","Number",carParkNumber));
         System.out.println(String.format("|%15s : %-45s|","Address",address));
         System.out.println(String.format("|%15s : %-45s|","Type",carParkType));
+        System.out.println(String.format("|%15s : %-45s|","Total Lots",totalLots));
+        System.out.println(String.format("|%15s : %-45s|","Lots Available",lotsAvailable));
+        System.out.println(String.format("|%15s : %-45s|","Lot Type",lotType));
         System.out.println(String.format("|%15s : %-45s|","System",typeOfParkingSystem));
         System.out.println(String.format("|%15s : %-45.2f|","X-Coordinate",location.getXCoordinate()));
         System.out.println(String.format("|%15s : %-45.2f|","Y-Coordinate",location.getYCoordinate()));
         System.out.println(String.format("|%15s : %-45s|","Free Parking",freeParking));
         System.out.println(String.format("|%15s : %-45s|\n\n","Night Parking",nightParking));
+
 
 
     }
@@ -97,10 +108,10 @@ public class CarPark {
         this.totalLots = totalLots;
     }
     public int getLotsTaken() {
-        return lotsTaken;
+        return lotsAvailable;
     }
     public void setLotsTaken(int lotsTaken) {
-        this.lotsTaken = lotsTaken;
+        this.lotsAvailable = lotsTaken;
     }
     public String getLotType() {
         return lotType;
