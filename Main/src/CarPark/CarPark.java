@@ -1,3 +1,6 @@
+package CarPark;
+import CarPark.Location.Location;
+
 import java.util.*;
 
 public class CarPark {
@@ -10,8 +13,47 @@ public class CarPark {
     private int totalLots;
     private int lotsTaken;
     private String lotType;
-    private int carParkNumber;
+    private String carParkNumber;
 
+
+    public CarPark(){
+        address = "";
+        carParkType = "";
+        typeOfParkingSystem = "";
+        location = new Location();
+        nightParking = false;
+        freeParking = false;
+        totalLots = 0;
+        lotsTaken = 0;
+        lotType = "";
+        carParkNumber = "";
+    }
+
+    public CarPark(String carParkNumber, String address, float xCor, float yCor, String carParkType, String typeOfParkingSystem, boolean freeParking, boolean nightParking){
+        this.address = address;
+        this.carParkType = carParkType;
+        this.typeOfParkingSystem = typeOfParkingSystem;
+        location = new Location(xCor,yCor);
+        this.nightParking = nightParking;
+        this.freeParking = freeParking;
+        totalLots = 0;
+        lotsTaken = 0;
+        lotType = "";
+        this.carParkNumber = carParkNumber;
+    }
+
+    public void print(){
+        System.out.println(String.format("|%15s : %-45s|","Number",carParkNumber));
+        System.out.println(String.format("|%15s : %-45s|","Address",address));
+        System.out.println(String.format("|%15s : %-45s|","Type",carParkType));
+        System.out.println(String.format("|%15s : %-45s|","System",typeOfParkingSystem));
+        System.out.println(String.format("|%15s : %-45.2f|","X-Coordinate",location.getXCoordinate()));
+        System.out.println(String.format("|%15s : %-45.2f|","Y-Coordinate",location.getYCoordinate()));
+        System.out.println(String.format("|%15s : %-45s|","Free Parking",freeParking));
+        System.out.println(String.format("|%15s : %-45s|\n\n","Night Parking",nightParking));
+
+
+    }
     public String getAddress() {
         return address;
     }
@@ -66,10 +108,10 @@ public class CarPark {
     public void setLotType(String lotType) {
         this.lotType = lotType;
     }
-    public int getCarParkNumber() {
+    public String getCarParkNumber() {
         return carParkNumber;
     }
-    public void setCarParkNumber(int carParkNumber) {
+    public void setCarParkNumber(String carParkNumber) {
         this.carParkNumber = carParkNumber;
     }
 
