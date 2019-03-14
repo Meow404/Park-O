@@ -62,8 +62,6 @@ public class CarPark {
         System.out.println(String.format("|%15s : %-45s|","Free Parking",freeParking));
         System.out.println(String.format("|%15s : %-45s|\n\n","Night Parking",nightParking));
 
-
-
     }
     public String getAddress() {
         return address;
