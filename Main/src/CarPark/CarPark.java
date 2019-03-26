@@ -1,7 +1,7 @@
 package CarPark;
-import CarPark.Location.Location;
+import Extra.Location.Location;
 
-import java.util.*;
+import java.util.Comparator;
 
 public class CarPark {
     private String address;
@@ -29,11 +29,11 @@ public class CarPark {
         carParkNumber = "";
     }
 
-    public CarPark(String carParkNumber, String address, float xCor, float yCor, String carParkType, String typeOfParkingSystem, boolean freeParking, boolean nightParking){
+    public CarPark(String carParkNumber, String address, Location location, String carParkType, String typeOfParkingSystem, boolean freeParking, boolean nightParking){
         this.address = address;
         this.carParkType = carParkType;
         this.typeOfParkingSystem = typeOfParkingSystem;
-        location = new Location(xCor,yCor);
+        this.location = location;
         this.nightParking = nightParking;
         this.freeParking = freeParking;
         totalLots = 0;
@@ -46,7 +46,6 @@ public class CarPark {
         totalLots = carParkUpdate.getTotalLots();
         lotsAvailable = carParkUpdate.getLotsAvailable();
         lotType = carParkUpdate.getLotType();
-        print();
     }
 
     public void print(){
@@ -57,8 +56,8 @@ public class CarPark {
         System.out.println(String.format("|%15s : %-45s|","Lots Available",lotsAvailable));
         System.out.println(String.format("|%15s : %-45s|","Lot Type",lotType));
         System.out.println(String.format("|%15s : %-45s|","System",typeOfParkingSystem));
-        System.out.println(String.format("|%15s : %-45.2f|","X-Coordinate",location.getXCoordinate()));
-        System.out.println(String.format("|%15s : %-45.2f|","Y-Coordinate",location.getYCoordinate()));
+        System.out.println(String.format("|%15s : %-45.6f|","X-Coordinate",location.getXCoordinate()));
+        System.out.println(String.format("|%15s : %-45.6f|","Y-Coordinate",location.getYCoordinate()));
         System.out.println(String.format("|%15s : %-45s|","Free Parking",freeParking));
         System.out.println(String.format("|%15s : %-45s|\n\n","Night Parking",nightParking));
 

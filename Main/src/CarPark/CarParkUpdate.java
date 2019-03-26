@@ -1,9 +1,56 @@
 package CarPark;
 
+import Extra.Extra;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import java.util.HashMap;
+
+import static Extra.Extra.*;
+
 public class CarParkUpdate {
     private int lotsAvailable;
     private int totalLots;
     private String lotType;
+
+    private static CarParkUpdate updateCarPark(JSONObject carPark) {
+        CarParkUpdate carParkUpdate = new CarParkUpdate();
+
+        carParkUpdate.setLastUpdate(carPark.getString("update_datetime"));
+        JSONArray carParkInfo = carPark.getJSONArray("carpark_info");
+
+        carParkUpdate.setLotsAvailable(Integer.valueOf(carParkInfo.getJSONObject(0).getString("lots_available")));
+        carParkUpdate.setTotalLots(Integer.valueOf(carParkInfo.getJSONObject(0).getString("total_lots")));
+        carParkUpdate.setLotType(carParkInfo.getJSONObject(0).getString("lot_type"));
+
+        return carParkUpdate;
+    }
+
+    private static HashMap<String, CarParkUpdate> updateAllCarPark(JSONObject obj) {
+        HashMap<String, CarParkUpdate> carParkUpdateHashMap = new HashMap<>();
+
+        //This is due to the format of data obtained from API
+        JSONArray items = obj.getJSONArray("items");
+        JSONObject firstObject = items.getJSONObject(0);
+        JSONArray carParkDataArray = firstObject.getJSONArray("carpark_data");
+
+        Extra.writeUsingOutputStream(items.toString(4),"CarPark.txt");
+
+        for (int dataIndex = 0; dataIndex < carParkDataArray.length(); dataIndex++) {
+            JSONObject carParkData = carParkDataArray.getJSONObject(dataIndex);
+            CarParkUpdate carParkUpdate = updateCarPark(carParkData);
+            carParkUpdateHashMap.put(carParkData.getString("carpark_number"), carParkUpdate);
+        }
+
+        return carParkUpdateHashMap;
+    }
+
+    public static HashMap<String, CarParkUpdate> getCarParkAvailablility() {
+        String inputLine = "{}";
+        inputLine = readFromURL("https://api.data.gov.sg/v1/transport/carpark-availability")
+;        JSONObject obj = new JSONObject(inputLine);
+        return updateAllCarPark(obj);
+
+    }
 
     public int getLotsAvailable() {
         return lotsAvailable;

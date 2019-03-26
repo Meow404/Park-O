@@ -1,12 +1,8 @@
-package CarPark.Location;
-
-import java.util.*;
-import java.math.*;
-import java.lang.*;
+package Extra.Location;
 
 public class Location {
-    private float xCoordinate;
-    private float yCoordinate;
+    private double xCoordinate;
+    private double yCoordinate;
     private int zipCode;
 
     public Location() {
@@ -15,7 +11,7 @@ public class Location {
         zipCode = 0 ;
     }
 
-    public Location(float xCoordinate, float yCoordinate) {
+    public Location(double xCoordinate, double yCoordinate) {
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
         zipCode = 0 ;
@@ -29,11 +25,11 @@ public class Location {
         return yCoordinate;
     }
 
-    public void setXCoordinate(float xCoordinate) {
+    public void setXCoordinate(double xCoordinate) {
         this.xCoordinate = xCoordinate;
     }
 
-    public void setYCoordinate(float yCoordinate) {
+    public void setYCoordinate(double yCoordinate) {
         this.yCoordinate = yCoordinate;
     }
 
