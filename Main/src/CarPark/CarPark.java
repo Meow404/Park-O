@@ -1,8 +1,6 @@
 package CarPark;
 import Extra.Location.Location;
 
-import java.util.Comparator;
-
 public class CarPark {
     private String address;
     private String carParkType;

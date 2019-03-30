@@ -5,11 +5,14 @@ import Extra.Location.Location;
 import org.json.JSONObject;
 
 import java.io.*;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
+
+import static java.lang.System.exit;
 
 public class Extra {
 
@@ -18,7 +21,7 @@ public class Extra {
     public static void writeUsingOutputStream(String data, String fileName) {
         OutputStream os = null;
         try {
-            os = new FileOutputStream(new File("CarPark.txt"));
+            os = new FileOutputStream(new File(fileName));
             os.write(data.getBytes(), 0, data.length());
         } catch (IOException e) {
             e.printStackTrace();
@@ -62,6 +65,35 @@ public class Extra {
         return content;
     }
 
+    public static String getHTTPSRequest(String ApiURL, String accountKey) {
+        StringBuffer content = new StringBuffer();
+        try {
+            URL url = new URL(ApiURL);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("Content-Type", "application/json");
+            con.setRequestProperty("AccountKey", accountKey);
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            content = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) {
+                content.append(inputLine);
+            }
+            in.close();
+        } catch (MalformedURLException ex) {
+            ex.getMessage();
+            exit(-1);
+        } catch (ProtocolException ex) {
+            ex.getMessage();
+            exit(-1);
+        } catch (IOException ex) {
+            ex.getMessage();
+            exit(-1);
+        }
+        return content.toString();
+    }
+
     public static Location retLongLang(double x, double y) {
         String stringLocation = readFromURL("https://developers.onemap.sg/commonapi/convert/3414to4326?X=" + Double.valueOf(x) + "&Y=" + Double.valueOf(y));
 
@@ -72,17 +104,17 @@ public class Extra {
         return new Location(lat, lon);
     }
 
-    public static void order(ArrayList<CarPark> carParks, Location curLocation ){
-        for(int i=0;i<carParks.size();i++)
-            for(int j=0;j<carParks.size()-i-1;j++){
-                if(distance(carParks.get(j).getLocation(),curLocation)>distance(carParks.get(j+1).getLocation(),curLocation))
-                    Collections.swap(carParks,j,j+1);
+    public static void order(ArrayList<CarPark> carParks, Location curLocation) {
+        for (int i = 0; i < carParks.size(); i++)
+            for (int j = 0; j < carParks.size() - i - 1; j++) {
+                if (distance(carParks.get(j).getLocation(), curLocation) > distance(carParks.get(j + 1).getLocation(), curLocation))
+                    Collections.swap(carParks, j, j + 1);
             }
 
     }
 
-    public static void printLoadingBar(int percentage){
+    public static void printLoadingBar(int percentage) {
         System.out.print("\b\b");
-        System.out.print(String.format("%3d ",percentage));
+        System.out.print(String.format("%3d ", percentage));
     }
 }
