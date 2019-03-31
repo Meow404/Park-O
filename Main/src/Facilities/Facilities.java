@@ -2,7 +2,7 @@ package Facilities;
 
 import Extra.Location.Location;
 import org.json.JSONObject;
-
+import org.json.JSONArray;
 public class Facilities {
     private boolean hawkerCentre;
     private boolean axsStation;

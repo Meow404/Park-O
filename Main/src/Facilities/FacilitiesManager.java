@@ -9,7 +9,7 @@ import static Extra.Extra.*;
 
 public class FacilitiesManager {
 
-    private static String[] themeArray = { "hawkercentre", "supermarket", "axs_station", "libraries", "exercisefacilities" };
+    private static String[] themeArray = { "hawkercentre", "supermarkets", "axs_station", "exercisefacilities", "libraries" };
     private static String APIToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjI1NDAsInVzZXJfaWQiOjI1NDAsImVtYWlsIjoiYWxmcmVkaGh3QGdtYWlsLmNvbSIsImZvcmV2ZXIiOmZhbHNlLCJpc3MiOiJodHRwOlwvXC9vbTIuZGZlLm9uZW1hcC5zZ1wvYXBpXC92MlwvdXNlclwvc2Vzc2lvbiIsImlhdCI6MTU1MzY3NjM3NSwiZXhwIjoxNTU0MTA4Mzc1LCJuYmYiOjE1NTM2NzYzNzUsImp0aSI6IjZlNGY4NjY2ZTU1ODQxNWU3YTZkNzE0N2FmMWJiYTc2In0.X7eHxXzNACWbyxZiyeJGxxLJeTt0kDA-iRriQmos7q0";
     private static JSONObject[] availableFacilities = new JSONObject[5];
     private static JSONArray facility = new JSONArray();
@@ -25,8 +25,7 @@ public class FacilitiesManager {
     /* param 'extents' take in Lat, xCor, Long, yCor */
     private static void retrieveThemes(Location location){
         String themeRetrieved;
-
-        for(int i = 0;i < themeArray.length;i++){
+        for(int i = 0;i < 5; i++){
             themeRetrieved = readFromURL("https://developers.onemap.sg/privateapi/themesvc/retrieveTheme?queryName=" + themeArray[i] + "&token=" + getAPIToken() + "&extents=" + location.getXCoordinate() + ",%20103.7796402," + location.getYCoordinate()+ ",%20103.8726032");
             JSONObject jObj = new JSONObject(themeRetrieved);
             availableFacilities[i] =  jObj;
@@ -39,9 +38,9 @@ public class FacilitiesManager {
         JSONArray hawkercentre = new JSONArray();
         for(int i = 1; i<6;i++){
             JSONObject object = hawkerCentreItems.getJSONObject(i);
-            JSONArray hawkerCentreData1 = object.getJSONArray("NAME");
-            JSONArray hawkerCentreData2 = object.getJSONArray("ADDRESS_MYENV");
-            JSONArray hawkerCentreData3 = object.getJSONArray("ADDRESSPOSTALCODE");
+            String hawkerCentreData1 = object.getString("NAME");
+            String hawkerCentreData2 = object.getString("ADDRESS_MYENV");
+            String hawkerCentreData3 = object.getString("ADDRESSPOSTALCODE");
             JSONObject update = new JSONObject();
             update.put("NAME", hawkerCentreData1);
             update.put("ADDRESS", hawkerCentreData2);
@@ -52,13 +51,15 @@ public class FacilitiesManager {
     }
     /* update supermarket with top 5 search results */
     private static void updateSupermarket(JSONObject jobj){
+        writeUsingOutputStream(jobj.toString(4),"facilities.txt");
         JSONArray supermarketItems = jobj.getJSONArray("SrchResults");
+       // writeUsingOutputStream(supermarketItems.toString(4),"facilities.txt");
         JSONArray supermarket = new JSONArray();
         for(int i = 1; i<6;i++){
             JSONObject object = supermarketItems.getJSONObject(i);
-            JSONArray supermarketData1 = object.getJSONArray("NAME");
-            JSONArray supermarketData2 = object.getJSONArray("STR_NAME");
-            JSONArray supermarketData3 = object.getJSONArray("POSTCODE");
+            String supermarketData1 = object.getString("NAME");
+            String supermarketData2 = object.getString("STR_NAME");
+            String supermarketData3 = object.getString("POSTCODE");
             JSONObject update = new JSONObject();
             update.put("NAME", supermarketData1);
             update.put("STR_NAME", supermarketData2);
@@ -73,8 +74,8 @@ public class FacilitiesManager {
         JSONArray axsstation = new JSONArray();
         for(int i = 1; i<6;i++){
             JSONObject object = axsStationItems.getJSONObject(i);
-            JSONArray axsStationData1 = object.getJSONArray("DESCRIPTION");
-            JSONArray axsStationData2 = object.getJSONArray("AXS_ID");
+            String axsStationData1 = object.getString("DESCRIPTION");
+            String axsStationData2 = object.getString("AXS_ID");
             JSONObject update = new JSONObject();
             update.put("DESCRIPTION", axsStationData1);
             update.put("STR_NAME", axsStationData2);
@@ -88,12 +89,12 @@ public class FacilitiesManager {
         JSONArray exercisefacility = new JSONArray();
         for(int i = 1; i<6;i++){
             JSONObject object = exerciseFacilityItems.getJSONObject(i);
-            JSONArray exerciseFacilityData1 = object.getJSONArray("NAME");
-            JSONArray exerciseFacilityData2 = object.getJSONArray("ADDRESSSTREETNAME");
-            JSONArray exerciseFacilityData3 = object.getJSONArray("ADDRESSPOSTALCODE");
+            String exerciseFacilityData1 = object.getString("NAME");
+            //String exerciseFacilityData2 = object.getString("ADDRESSSTREETNAME");
+            String exerciseFacilityData3 = object.getString("ADDRESSPOSTALCODE");
             JSONObject update = new JSONObject();
-            update.put("Name", exerciseFacilityData1);
-            update.put("ADDRESSSTREETNAME", exerciseFacilityData2);
+            update.put("NAME", exerciseFacilityData1);
+            //update.put("ADDRESSSTREETNAME", exerciseFacilityData2);
             update.put("ADDRESSPOSTALCODE", exerciseFacilityData3);
             exercisefacility.put(update);
         }
@@ -103,6 +104,20 @@ public class FacilitiesManager {
     /* update library with top 5 search results */
     private static void updateLibrary(JSONObject jobj){
         /* to be implemented as per above */
+        JSONArray libraryItems = jobj.getJSONArray("SrchResults");
+        JSONArray library = new JSONArray();
+        for(int i = 1; i<4;i++){
+            JSONObject object = libraryItems.getJSONObject(i);
+            String libraryData1 = object.getString("NAME");
+            String libraryData2 = object.getString("ADDRESSSTREETNAME");
+            String libraryData3 = object.getString("ADDRESSPOSTALCODE");
+            JSONObject update = new JSONObject();
+            update.put("NAME", libraryData1);
+            update.put("ADDRESSSTREETNAME", libraryData2);
+            update.put("ADDRESSPOSTALCODE", libraryData3);
+            library.put(update);
+        }
+        facility.put(library);
     }
 
 
@@ -114,15 +129,16 @@ public class FacilitiesManager {
 
     public static void main(String args[]) {
         Location location = new Location(); /*for the purpose of completing the code */
+        location.setXCoordinate(1.291789);
+        location.setYCoordinate(1.3290461);
         retrieveThemes(location);
         updateHawkerCentre(availableFacilities[0]);
         updateSupermarket(availableFacilities[1]);
         updateAXSstation(availableFacilities[2]);
         updateExerciseFacility(availableFacilities[3]);
-        /* updateLibrary(availableFacilities[4]);*/
-        System.out.print(facility);
+        updateLibrary(availableFacilities[4]);
+        System.out.println(facility);
         System.out.print("Completed.");
-
     }
 
 }
