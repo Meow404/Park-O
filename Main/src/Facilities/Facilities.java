@@ -1,85 +1,72 @@
 package Facilities;
 
 import Extra.Location.Location;
+import org.json.JSONObject;
 
 public class Facilities {
-    private boolean hawkerCenter;
-    private boolean shoppingMall;
-    private boolean cinema;
-    private boolean gym;
-    private boolean bar;
-    private boolean club;
-    private boolean zoo;
+    private boolean hawkerCentre;
+    private boolean axsStation;
+    private boolean exerciseFacility;
+    private boolean library;
+    private boolean supermarket;
     private String name;
     private Location location;
 
     public Facilities() {
-        hawkerCenter = false;
-        shoppingMall = false;
-        cinema = false;
-        gym = false;
-        bar = false;
-        club = false;
-        zoo = false;
+        hawkerCentre = false;
+        axsStation = false;
+        exerciseFacility = false;
+        library = false;
+        supermarket = false;
         name = "";
         location = new Location();
     }
 
+    public Facilities(String name, Location location, boolean hawkerCentre, boolean axsStation, boolean gym, boolean library, boolean supermarket) {
+        this.hawkerCentre = hawkerCentre;
+        this.axsStation = axsStation;
+        this.exerciseFacility = gym;
+        this.library = library;
+        this.supermarket = supermarket;
+        this.name = name;
+        this.location = location;
+    }
+
     public void print(){
-        System.out.println(String.format("|%15s : %-45s|","Hawker Center",hawkerCenter == true ? "True" : "False"));
-        System.out.println(String.format("|%15s : %-45s|","Shopping Mall",shoppingMall == true ? "True" : "False"));
-        System.out.println(String.format("|%15s : %-45s|","Cinema",cinema == true ? "True" : "False"));
-        System.out.println(String.format("|%15s : %-45s|","Gym",gym == true ? "True" : "False"));
-        System.out.println(String.format("|%15s : %-45s|","Bar",bar == true ? "True" : "False"));
-        System.out.println(String.format("|%15s : %-45s|","Club",club == true ? "True" : "False"));
-        System.out.println(String.format("|%15s : %-45s|","Zoo",zoo == true ? "True" : "False"));
+        System.out.println(String.format("|%15s : %-45s|","Hawker Center",hawkerCentre == true ? "True" : "False"));
+        System.out.println(String.format("|%15s : %-45s|","axsExpressTopUp",axsStation == true ? "True" : "False"));
+        System.out.println(String.format("|%15s : %-45s|","Gym",exerciseFacility == true ? "True" : "False"));
+        System.out.println(String.format("|%15s : %-45s|","Library",library == true ? "True" : "False"));
         System.out.println(String.format("|%15s : %-45s|","Name", name));
+        System.out.println(String.format("|%15s : %-45s|","Supermarket",supermarket == true ? "True" : "False"));
         System.out.println(String.format("|%15s : %-45s|","X-Coordinate",location.getXCoordinate()));
         System.out.println(String.format("|%15s : %-45s|","Y-Coordinate",location.getYCoordinate()));
     }
 
     public boolean getHawkerCenter() {
-        return hawkerCenter;
+        return hawkerCentre;
     }
-    public void setHawkerCenter( boolean newHawkerCenter ) {
-        hawkerCenter = newHawkerCenter;
+    public void setHawkerCentre( boolean newHawkerCentre ) {
+        hawkerCentre = newHawkerCentre;
     }
-    public boolean getShoppingMall(){
-        return shoppingMall;
+    public boolean getAxsStation(){
+        return axsStation;
     }
-    public void setShoppingMall( boolean newShoppingMall ){
-        shoppingMall = newShoppingMall;
+    public void setAxsStation( boolean newAxsStation ){
+        axsStation = newAxsStation;
     }
-    public boolean getCinema(){
-        return cinema;
+    public boolean getSupermarket() {
+        return supermarket;
     }
-    public void setCinema( boolean newCinema ){
-        cinema = newCinema;
+    public void setSupermarket( boolean newSupermarket ) {
+        hawkerCentre = newSupermarket;
     }
     public boolean getGym(){
-        return gym;
+        return exerciseFacility;
     }
-    public void setGym( boolean newGym ){
-        gym = newGym;
-    }
-    public boolean getBar(){
-        return bar;
-    }
-    public void setBar( boolean newBar ){
-        bar = newBar;
-    }
-    public boolean getClub(){
-        return club;
-    }
-    public void setClub( boolean newClub ){
-        club = newClub;
-    }
-    public boolean getZoo(){
-        return zoo;
-    }
-    public void setZoo( boolean newZoo ){
-        zoo = newZoo;
-    }
+    public void setGym( boolean newGym ){ exerciseFacility = newGym; }
+    public boolean getLibrary(){ return library; }
+    public void setLibrary( boolean newLibrary ){ library = newLibrary; }
     public String getName(){
         return name;
     }

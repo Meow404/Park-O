@@ -3,11 +3,15 @@ package Extra.Location;
 public class Location {
     private double xCoordinate;
     private double yCoordinate;
+    private double latitude;
+    private double longtitude;
     private int zipCode;
 
     public Location() {
         xCoordinate = 0;
         yCoordinate = 0;
+        latitude = 0;
+        longtitude = 0;
         zipCode = 0 ;
     }
 
