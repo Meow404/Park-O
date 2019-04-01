@@ -1,17 +1,19 @@
 package Facilities;
 
 import Extra.Location.Location;
+import Facilities.FacilityTypes.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import java.util.ArrayList;
 
 import static Extra.Extra.*;
 
 
 public class FacilitiesManager {
-
+    /* these are the various themes we will be querying for */
     private static String[] themeArray = { "hawkercentre", "supermarkets", "axs_station", "exercisefacilities", "libraries" };
     private static String APIToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjI1NDAsInVzZXJfaWQiOjI1NDAsImVtYWlsIjoiYWxmcmVkaGh3QGdtYWlsLmNvbSIsImZvcmV2ZXIiOmZhbHNlLCJpc3MiOiJodHRwOlwvXC9vbTIuZGZlLm9uZW1hcC5zZ1wvYXBpXC92MlwvdXNlclwvc2Vzc2lvbiIsImlhdCI6MTU1MzY3NjM3NSwiZXhwIjoxNTU0MTA4Mzc1LCJuYmYiOjE1NTM2NzYzNzUsImp0aSI6IjZlNGY4NjY2ZTU1ODQxNWU3YTZkNzE0N2FmMWJiYTc2In0.X7eHxXzNACWbyxZiyeJGxxLJeTt0kDA-iRriQmos7q0";
-    private static JSONObject[] availableFacilities = new JSONObject[5];
+    private static ArrayList<JSONObject> availableFacilities = new ArrayList<>();
     private static JSONArray facility = new JSONArray();
 
     /* API Token to be changed every 3 days */
@@ -21,124 +23,128 @@ public class FacilitiesManager {
     private static String getAPIToken(){
         return APIToken;
     }
+
     /* retrieve all theme data in JSON format into files */
-    /* param 'extents' take in Lat, xCor, Long, yCor */
+
+    /* param 'extents' take in Lat, xCor, Long, yCor  We will need to use the coordinates converter here */
     private static void retrieveThemes(Location location){
         String themeRetrieved;
-        for(int i = 0;i < 5; i++){
-            themeRetrieved = readFromURL("https://developers.onemap.sg/privateapi/themesvc/retrieveTheme?queryName=" + themeArray[i] + "&token=" + getAPIToken() + "&extents=" + location.getXCoordinate() + ",%20103.7796402," + location.getYCoordinate()+ ",%20103.8726032");
+        for(int index  = 0;index < themeArray.length ; index++){
+            themeRetrieved = readFromURL("https://developers.onemap.sg/privateapi/themesvc/retrieveTheme?queryName=" + themeArray[index] + "&token=" + getAPIToken() + "&extents=" + location.getXCoordinate() + ",%20103.7796402," + location.getYCoordinate()+ ",%20103.8726032");
             JSONObject jObj = new JSONObject(themeRetrieved);
-            availableFacilities[i] =  jObj;
-            writeUsingOutputStream(jObj.toString(4),themeArray[i] + ".txt");
+            /* we append the entire JSON data of EACH theme into each index of the ArrayList */
+            availableFacilities.add(jObj);
+            writeUsingOutputStream(jObj.toString(4),themeArray[index] + ".txt");
         }
-    }
-    /* update hawkerCentre with top 5 search results */
-    private static void updateHawkerCentre(JSONObject jobj){
-        JSONArray hawkerCentreItems = jobj.getJSONArray("SrchResults");
-        JSONArray hawkercentre = new JSONArray();
-        for(int i = 1; i<6;i++){
-            JSONObject object = hawkerCentreItems.getJSONObject(i);
-            String hawkerCentreData1 = object.getString("NAME");
-            String hawkerCentreData2 = object.getString("ADDRESS_MYENV");
-            String hawkerCentreData3 = object.getString("ADDRESSPOSTALCODE");
-            JSONObject update = new JSONObject();
-            update.put("NAME", hawkerCentreData1);
-            update.put("ADDRESS", hawkerCentreData2);
-            update.put("POSTALCODE", hawkerCentreData3);
-            hawkercentre.put(update);
-        }
-        facility.put(hawkercentre);
-    }
-    /* update supermarket with top 5 search results */
-    private static void updateSupermarket(JSONObject jobj){
-        writeUsingOutputStream(jobj.toString(4),"facilities.txt");
-        JSONArray supermarketItems = jobj.getJSONArray("SrchResults");
-       // writeUsingOutputStream(supermarketItems.toString(4),"facilities.txt");
-        JSONArray supermarket = new JSONArray();
-        for(int i = 1; i<6;i++){
-            JSONObject object = supermarketItems.getJSONObject(i);
-            String supermarketData1 = object.getString("NAME");
-            String supermarketData2 = object.getString("STR_NAME");
-            String supermarketData3 = object.getString("POSTCODE");
-            JSONObject update = new JSONObject();
-            update.put("NAME", supermarketData1);
-            update.put("STR_NAME", supermarketData2);
-            update.put("POSTCODE", supermarketData3);
-            supermarket.put(update);
-        }
-        facility.put(supermarket);
-    }
-    /* update axsStation with top 5 search results */
-    private static void updateAXSstation(JSONObject jobj){
-        JSONArray axsStationItems = jobj.getJSONArray("SrchResults");
-        JSONArray axsstation = new JSONArray();
-        for(int i = 1; i<6;i++){
-            JSONObject object = axsStationItems.getJSONObject(i);
-            String axsStationData1 = object.getString("DESCRIPTION");
-            String axsStationData2 = object.getString("AXS_ID");
-            JSONObject update = new JSONObject();
-            update.put("DESCRIPTION", axsStationData1);
-            update.put("STR_NAME", axsStationData2);
-            axsstation.put(update);
-        }
-        facility.put(axsstation);
-    }
-    /* update exerciseFacility with top 5 search results */
-    private static void updateExerciseFacility(JSONObject jobj){
-        JSONArray exerciseFacilityItems = jobj.getJSONArray("SrchResults");
-        JSONArray exercisefacility = new JSONArray();
-        for(int i = 1; i<6;i++){
-            JSONObject object = exerciseFacilityItems.getJSONObject(i);
-            String exerciseFacilityData1 = object.getString("NAME");
-            //String exerciseFacilityData2 = object.getString("ADDRESSSTREETNAME");
-            String exerciseFacilityData3 = object.getString("ADDRESSPOSTALCODE");
-            JSONObject update = new JSONObject();
-            update.put("NAME", exerciseFacilityData1);
-            //update.put("ADDRESSSTREETNAME", exerciseFacilityData2);
-            update.put("ADDRESSPOSTALCODE", exerciseFacilityData3);
-            exercisefacility.put(update);
-        }
-        facility.put(exercisefacility);
     }
 
-    /* update library with top 5 search results */
-    private static void updateLibrary(JSONObject jobj){
-        /* to be implemented as per above */
-        JSONArray libraryItems = jobj.getJSONArray("SrchResults");
-        JSONArray library = new JSONArray();
-        for(int i = 1; i<4;i++){
-            JSONObject object = libraryItems.getJSONObject(i);
-            String libraryData1 = object.getString("NAME");
-            String libraryData2 = object.getString("ADDRESSSTREETNAME");
-            String libraryData3 = object.getString("ADDRESSPOSTALCODE");
-            JSONObject update = new JSONObject();
-            update.put("NAME", libraryData1);
-            update.put("ADDRESSSTREETNAME", libraryData2);
-            update.put("ADDRESSPOSTALCODE", libraryData3);
-            library.put(update);
-        }
-        facility.put(library);
+    private static FacilityTypes retFacilityTypes (String facilityType, String name, String address, Double xCor, Double yCor) {
+        if (facilityType.equals("HawkerCentre"))
+            return new HawkerCentre(name, address, xCor, yCor);
+        else if (facilityType.equals("Supermarket"))
+            return new Supermarket(name, address, xCor, yCor);
+        else if (facilityType.equals("AXSstation"))
+            return new AXSstation(name, address, xCor, yCor);
+        else if (facilityType.equals("ExerciseFacility"))
+            return new ExerciseFacility(name, address, xCor, yCor);
+        else if (facilityType.equals("Library"))
+            return new Library(name, address, xCor, yCor);
+        else
+            return null;
     }
 
 
+    private static void updateFacility(){
+        for(int index = 0; index < availableFacilities.size();index++){
+            JSONArray facilityItems = availableFacilities.get(index).getJSONArray("SrchResults");
+            JSONArray items = new JSONArray();
+            switch(index){
+                case 0: ArrayList<FacilityTypes> hawkerCentres = new ArrayList<>();
+                        for(int i=1; i< 6;i++){
+                            JSONObject jobj = facilityItems.getJSONObject(i);
+                            String name = jobj.getString("NAME");
+                            String address = jobj.getString("ADDRESS_MYENV");
+                            String postal = jobj.getString("ADDRESSPOSTALCODE");
+                            double xCor = Double.parseDouble(jobj.getString("LATITUDE"));
+                            double yCor = Double.parseDouble(jobj.getString("LONGITUDE"));
+                            hawkerCentres.add(retFacilityTypes("HawkerCentre", name, (address + postal) , xCor, yCor));
+                        }
+                        for (FacilityTypes Facility : hawkerCentres) {
+                            Facility.print();
+                        }
+                        break;
+                case 1: ArrayList<FacilityTypes> supermarkets = new ArrayList<>();
+                        for(int i=1; i< 6;i++){
+                            JSONObject jobj = facilityItems.getJSONObject(i);
+                            String name = jobj.getString("NAME");
+                            String address = jobj.getString("STR_NAME");
+                            String postal = jobj.getString("POSTCODE");
+                            String geoLoc = jobj.getString("LatLng");
+                            Double[] xyCor = splitLatLong(geoLoc);
+                            supermarkets.add(retFacilityTypes("Supermarket", name, (address + postal) , xyCor[0], xyCor[1]));
+                        }
+                        for (FacilityTypes Facility : supermarkets) {
+                            Facility.print();
+                        }
+                        break;
+
+                case 2: ArrayList<FacilityTypes> axsStations = new ArrayList<>();
+                        for(int i=1; i< 6;i++){
+                            JSONObject jobj = facilityItems.getJSONObject(i);
+                            String axsID = jobj.getString("AXS_ID");
+                            String address = jobj.getString("DESCRIPTION");
+                            String geoLoc = jobj.getString("LatLng");
+                            Double[] xyCor = splitLatLong(geoLoc);
+                            axsStations.add(retFacilityTypes("AXSstation", axsID, address , xyCor[0], xyCor[1]));
+                        }
+                        for (FacilityTypes Facility : axsStations) {
+                            Facility.print();
+                        }
+                        break;
+
+                case 3: ArrayList<FacilityTypes> exerciseFacilities = new ArrayList<>();
+                        for(int i=1; i< 6;i++){
+                            JSONObject jobj = facilityItems.getJSONObject(i);
+                            String name = jobj.getString("NAME");
+                            String address = jobj.getString("ADDRESSSTREETNAME");
+                            String postal = jobj.getString("ADDRESSPOSTALCODE");
+                            String geoLoc = jobj.getString("LatLng");
+                            Double[] xyCor = splitLatLong(geoLoc);
+                            exerciseFacilities.add(retFacilityTypes("ExerciseFacility", name, (address + postal), xyCor[0], xyCor[1]));
+                        }
+                        for (FacilityTypes Facility : exerciseFacilities) {
+                            Facility.print();
+                        }
+                        break;
+
+                case 4: ArrayList<FacilityTypes> libraries = new ArrayList<>();
+                        for(int i=1; i< 4;i++){
+                            JSONObject jobj = facilityItems.getJSONObject(i);
+                            String name = jobj.getString("NAME");
+                            String address = jobj.getString("ADDRESSSTREETNAME");
+                            String postal = jobj.getString("ADDRESSPOSTALCODE");
+                            String geoLoc = jobj.getString("LatLng");
+                            Double[] xyCor = splitLatLong(geoLoc);
+                            libraries.add(retFacilityTypes("Library", name, (address + postal), xyCor[0], xyCor[1]));
+                        }
+                        for (FacilityTypes Facility : libraries) {
+                            Facility.print();
+                        }
+                        break;
+            }
+        }
+    }
     /* ###################################################################### */
     /* use this to get all available theme names */
     /* String allThemes = readFromURL("https://developers.onemap.sg/privateapi/themesvc/getAllThemesInfo?token="+APIToken); */
     /* ###################################################################### */
 
-
     public static void main(String args[]) {
-        Location location = new Location(); /*for the purpose of completing the code */
+        Location location = new Location(); /*for the purpose of completing the code - using mock coordinate*/
         location.setXCoordinate(1.291789);
-        location.setYCoordinate(1.3290461);
+        location.setYCoordinate(1.3290461); /* we still need to do coordinate conversion for xCor and yCor */
         retrieveThemes(location);
-        updateHawkerCentre(availableFacilities[0]);
-        updateSupermarket(availableFacilities[1]);
-        updateAXSstation(availableFacilities[2]);
-        updateExerciseFacility(availableFacilities[3]);
-        updateLibrary(availableFacilities[4]);
-        System.out.println(facility);
-        System.out.print("Completed.");
+        updateFacility();
     }
 
 }

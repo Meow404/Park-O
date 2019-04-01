@@ -34,6 +34,13 @@ public class Extra {
             }
         }
     }
+    public static Double[] splitLatLong(String LatLng){
+        String values[] = LatLng.split(",");
+        Double xCor = Double.parseDouble(values[0]);
+        Double yCor = Double.parseDouble(values[1]);
+        Double[] location = {xCor, yCor};
+        return location;
+    }
 
     public static double distance(Location startLocation, Location stopLocation) {
         if ((startLocation.getXCoordinate() == stopLocation.getXCoordinate()) && (startLocation.getYCoordinate() == stopLocation.getYCoordinate())) {

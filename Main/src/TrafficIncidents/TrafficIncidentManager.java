@@ -60,7 +60,8 @@ public class TrafficIncidentManager {
 
         }
 
-        for (IncidentTypes Incident : trafficIncidents)
+        for (IncidentTypes Incident : trafficIncidents) {
             Incident.print();
+        }
     }
 }
