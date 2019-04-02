@@ -23,7 +23,7 @@ public class TrafficIncidentManager {
             return new Obstacle(incidentMessage, xCor, yCor);
         else if (incidentType.equals("Road block"))
             return new RoadBlock(incidentMessage, xCor, yCor);
-        else if (incidentType.equals("Heavy traffic"))
+        else if (incidentType.equals("Heavy Traffic"))
             return new HeavyTraffic(incidentMessage, xCor, yCor);
         else if (incidentType.equals("Misc."))
             return new Miscellaneous(incidentMessage, xCor, yCor);
