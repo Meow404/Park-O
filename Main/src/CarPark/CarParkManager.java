@@ -1,12 +1,15 @@
 package CarPark;
 
 import Extra.Location.Location;
+import com.opencsv.CSVReader;
 
 import static Extra.Extra.*;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class CarParkManager {
@@ -18,7 +21,7 @@ public class CarParkManager {
 
         float xCor = Float.valueOf(carParkInformation[2]);
         float yCor = Float.valueOf(carParkInformation[3]);
-        Location location = retLongLang(xCor, yCor);
+        Location location = new Location(xCor, yCor);
 
         String carParkType = carParkInformation[4];
         String typeOfParkingSystem = carParkInformation[5];
@@ -33,19 +36,19 @@ public class CarParkManager {
 
     private static ArrayList<CarPark> getCarParks() {
         ArrayList<CarPark> carParks = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("Files\\hdb-carpark-information\\hdb-carpark-information.csv"))) {
-            String line;
+        try {
+            CSVReader csvReader = new CSVReader(new FileReader("Files\\carParkInformation.csv"));
+            String[] line;
             int i = 0;
-            while ((line = br.readLine()) != null) {
+            while ((line = csvReader.readNext()) != null) {
                 if (i == 0) {
                     i = 1;
                     continue;
                 }
-                String[] values = line.split("\",\"");
-                carParks.add(retCarPark(values));
+                carParks.add(retCarPark(line));
             }
-        } catch (IOException ex) {
-            ex.getStackTrace();
+            csvReader.close();
+        } catch (IOException EX) {
         }
         return carParks;
     }
@@ -74,14 +77,16 @@ public class CarParkManager {
     }
 
     public static void main(String args[]) {
+        final long startTime = System.currentTimeMillis();
         ArrayList<CarPark> carParks;
         carParks = getCarParks();
-        carParks = getCarParksWithDistance(carParks, new Location(1.342678, 103.757214), 0.5);;
+        carParks = getCarParksWithDistance(carParks, new Location(1.342678, 103.757214), 0.5);
         HashMap<String, CarParkUpdate> carParkUpdateHashMap = CarParkUpdate.getCarParkAvailablility();
         getCarParkList(carParks, carParkUpdateHashMap);
-        order(carParks, new Location(1.342188, 103.736282));
+        order(carParks, new Location(1.342678, 103.757214));
         for (CarPark carPark : carParks)
             carPark.print();
-        System.out.print("Done");
+        final long endTime = System.currentTimeMillis();
+        System.out.print("Done " + (endTime - startTime));
     }
 }
