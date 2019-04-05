@@ -1,5 +1,6 @@
 package TrafficIncidents;
 
+import Extra.Location.Location;
 import TrafficIncidents.IncidentTypes.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -35,16 +36,10 @@ public class TrafficIncidentManager {
             return null;
     }
 
-
-    public static void main(String args[]) {
+    private static ArrayList<IncidentTypes> manageJsonData(JSONObject trafficIncidentJsonObj) {
         ArrayList<IncidentTypes> trafficIncidents = new ArrayList<>();
-        String trafficIncidentsApi = "http://datamall2.mytransport.sg/ltaodataservice/TrafficIncidents";
-        String dataMallAccountKey = "ALUuk8N1RNOOh8e8lGi3QQ==";
-
-        JSONObject trafficIncidentJsonObj = new JSONObject(getHTTPSRequest(trafficIncidentsApi, dataMallAccountKey));
         JSONArray trafficIncidentJsonArray = trafficIncidentJsonObj.getJSONArray("value");
-        writeUsingOutputStream(trafficIncidentJsonArray.toString(4), "trafficIncidents.txt");
-
+        writeUsingOutputStream(trafficIncidentJsonArray.toString(4),"trafficIncidents.txt");
 
         for (int index = 0; index < trafficIncidentJsonArray.length(); index++) {
 
@@ -59,9 +54,21 @@ public class TrafficIncidentManager {
             trafficIncidents.add(retIncidentTypes(incidentType, incidentMessage, xCor, yCor));
 
         }
+        return trafficIncidents;
+    }
 
-        for (IncidentTypes Incident : trafficIncidents) {
-            Incident.print();
-        }
+
+    public static ArrayList<IncidentTypes> returnTrafficIncidents(Location myLocation) {
+        ArrayList<IncidentTypes> trafficIncidents ;
+        String trafficIncidentsApi = "http://datamall2.mytransport.sg/ltaodataservice/TrafficIncidents";
+        String dataMallAccountKey = "ALUuk8N1RNOOh8e8lGi3QQ==";
+
+        JSONObject trafficIncidentJsonObj = new JSONObject(getHTTPSRequest(trafficIncidentsApi, dataMallAccountKey));
+        trafficIncidents = manageJsonData(trafficIncidentJsonObj);
+
+        if(trafficIncidents.size()!=0)
+            order(trafficIncidents,myLocation);
+
+        return trafficIncidents;
     }
 }

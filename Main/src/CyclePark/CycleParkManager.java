@@ -7,9 +7,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import static Extra.Extra.getHTTPSRequest;
+import static Extra.Extra.order;
 import static Extra.Extra.writeUsingOutputStream;
 
 public class CycleParkManager {
+
 
     private static String retCycleParkURL(Location currentLocation, double radius) {
         String xCor = String.valueOf(currentLocation.getXCoordinate());
@@ -21,7 +23,7 @@ public class CycleParkManager {
     private static CyclePark retCyclePark(JSONObject cycleParkObj) {
         String description = cycleParkObj.getString("Description");
         String rackType = cycleParkObj.getString("RackType");
-        long rackCount = Long.valueOf((Integer)cycleParkObj.get("RackCount"));
+        long rackCount = Long.valueOf((Integer) cycleParkObj.get("RackCount"));
 
         Double xCor = (Double) cycleParkObj.get("Latitude");
         Double yCor = (Double) cycleParkObj.get("Longitude");
@@ -36,21 +38,22 @@ public class CycleParkManager {
         return new CyclePark(description, xCor, yCor, rackType, rackCount, shelterB);
     }
 
-    public static void main(String args[]) {
+    public static ArrayList<CyclePark> returnCycleParksInVicinity(Location location, double constraint) {
         ArrayList<CyclePark> cycleParks = new ArrayList<>();
-        String cycleParkApi = retCycleParkURL(new Location(1.342678, 103.757214), 0.5);
+        String cycleParkApi = retCycleParkURL(location, constraint);
         String dataMallAccountKey = "ALUuk8N1RNOOh8e8lGi3QQ==";
 
         JSONObject cycleParkJsonObj = new JSONObject(getHTTPSRequest(cycleParkApi, dataMallAccountKey));
         JSONArray cycleParkJsonArray = cycleParkJsonObj.getJSONArray("value");
-        writeUsingOutputStream(cycleParkJsonArray.toString(4), "cycleParks.txt");
 
         for (int index = 0; index < cycleParkJsonArray.length(); index++) {
-            cycleParks.add(retCyclePark(cycleParkJsonArray.getJSONObject(index)));
+            CyclePark cyclePark = retCyclePark(cycleParkJsonArray.getJSONObject(index));
+            cycleParks.add(cyclePark);
         }
 
-        for (CyclePark cyclePark : cycleParks) {
-            cyclePark.print();
-        }
+        if (cycleParks.size() != 0)
+            order(cycleParks, location);
+
+        return cycleParks;
     }
 }

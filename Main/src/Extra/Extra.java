@@ -2,6 +2,7 @@ package Extra;
 
 import CarPark.CarPark;
 import Extra.Location.Location;
+import Extra.Location.LocationHandler;
 import org.json.JSONObject;
 
 import java.io.*;
@@ -11,7 +12,6 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.*;
 
 import static java.lang.System.exit;
 
@@ -34,7 +34,8 @@ public class Extra {
             }
         }
     }
-    public static Double[] splitLatLong(String LatLng){
+
+    public static Double[] splitLatLong(String LatLng) {
         String values[] = LatLng.split(",");
         Double xCor = Double.parseDouble(values[0]);
         Double yCor = Double.parseDouble(values[1]);
@@ -112,13 +113,15 @@ public class Extra {
         return new Location(lat, lon);
     }
 
-    public static void order(ArrayList<CarPark> carParks, Location curLocation) {
-        for (int i = 0; i < carParks.size(); i++)
-            for (int j = 0; j < carParks.size() - i - 1; j++) {
-                if (distance(carParks.get(j).getLocation(), curLocation) > distance(carParks.get(j + 1).getLocation(), curLocation))
-                    Collections.swap(carParks, j, j + 1);
-            }
+    public static void order(ArrayList objects, Location curLocation) {
+            for (int i = 0; i < objects.size(); i++)
+                for (int j = 0; j < objects.size() - i - 1; j++) {
+                    LocationHandler object1 = (LocationHandler)objects.get(j);
+                    LocationHandler object2 = (LocationHandler)objects.get(j+1);
+                    if (distance(object1.getLocation(), curLocation) > distance(object2.getLocation(), curLocation))
+                        Collections.swap(objects, j, j + 1);
 
+                }
     }
 
     public static void printLoadingBar(int percentage) {

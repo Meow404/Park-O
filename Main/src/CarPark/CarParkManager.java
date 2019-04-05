@@ -7,12 +7,15 @@ import static Extra.Extra.*;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
 
 
 public class CarParkManager {
+
+    private static ArrayList<CarPark> carParks;
+
+    public CarParkManager() {
+        carParks = retCarParks();
+    }
 
     private static CarPark retCarPark(String[] carParkInformation) {
 
@@ -34,7 +37,7 @@ public class CarParkManager {
         return carPark;
     }
 
-    private static ArrayList<CarPark> getCarParks() {
+    private static ArrayList<CarPark> retCarParks() {
         ArrayList<CarPark> carParks = new ArrayList<>();
         try {
             CSVReader csvReader = new CSVReader(new FileReader("Files\\carParkInformation.csv"));
@@ -53,7 +56,7 @@ public class CarParkManager {
         return carParks;
     }
 
-    private static ArrayList<CarPark> getCarParksWithDistance(ArrayList<CarPark> carParks, Location currentLocation, double constraint) {
+    public static ArrayList<CarPark> getCarParksWithDistance(Location currentLocation, double constraint) {
         ArrayList<CarPark> constrainedCarParks = new ArrayList<>();
         for (CarPark carPark : carParks) {
             if (distance(carPark.getLocation(), currentLocation) <= constraint) {
@@ -63,30 +66,22 @@ public class CarParkManager {
         return constrainedCarParks;
     }
 
-    private static ArrayList<CarPark> getCarParkList(ArrayList<CarPark> carParks, HashMap<String, CarParkUpdate> carParkUpdateHashMap) {
-        for (int i = 0; i < carParks.size(); i++) {
-            CarParkUpdate carParkUpdate = carParkUpdateHashMap.get(carParks.get(i).getCarParkNumber());
-            if (carParkUpdate == null || carParkUpdate.getTotalLots() == 0) {
-                carParks.remove(i);
-                i--;
-            } else
-                carParks.get(i).update(carParkUpdate);
-        }
+    public static ArrayList<CarPark> returnUpdatedCarParkList(Location currentLocation, double constraint) {
+        ArrayList<CarPark> constrainedCarParks = getCarParksWithDistance(currentLocation, constraint);
+        constrainedCarParks = CarParkUpdate.getCarParkAvailability(constrainedCarParks);
 
+        if (constrainedCarParks.size() != 0)
+            order(constrainedCarParks, currentLocation);
+        return constrainedCarParks;
+    }
+
+
+    public static void setCarParks(ArrayList<CarPark> carParks) {
+        carParks = carParks;
+    }
+
+    public ArrayList<CarPark> getCarParks() {
         return carParks;
     }
 
-    public static void main(String args[]) {
-        final long startTime = System.currentTimeMillis();
-        ArrayList<CarPark> carParks;
-        carParks = getCarParks();
-        carParks = getCarParksWithDistance(carParks, new Location(1.342678, 103.757214), 0.5);
-        HashMap<String, CarParkUpdate> carParkUpdateHashMap = CarParkUpdate.getCarParkAvailablility();
-        getCarParkList(carParks, carParkUpdateHashMap);
-        order(carParks, new Location(1.342678, 103.757214));
-        for (CarPark carPark : carParks)
-            carPark.print();
-        final long endTime = System.currentTimeMillis();
-        System.out.print("Done " + (endTime - startTime));
-    }
 }

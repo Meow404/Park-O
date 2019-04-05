@@ -3,6 +3,8 @@ package CarPark;
 import Extra.Extra;
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import static Extra.Extra.*;
@@ -25,30 +27,36 @@ public class CarParkUpdate {
         return carParkUpdate;
     }
 
-    private static HashMap<String, CarParkUpdate> updateAllCarPark(JSONObject obj) {
-        HashMap<String, CarParkUpdate> carParkUpdateHashMap = new HashMap<>();
+    private static ArrayList<CarPark> updateAllCarPark(JSONObject obj, ArrayList<CarPark> carParks) {
 
         //This is due to the format of data obtained from API
+        ArrayList<CarPark> updatedCarPark = new ArrayList<>();
         JSONArray items = obj.getJSONArray("items");
         JSONObject firstObject = items.getJSONObject(0);
         JSONArray carParkDataArray = firstObject.getJSONArray("carpark_data");
 
-        Extra.writeUsingOutputStream(items.toString(4),"CarPark.txt");
+        Extra.writeUsingOutputStream(items.toString(4), "CarPark.txt");
 
         for (int dataIndex = 0; dataIndex < carParkDataArray.length(); dataIndex++) {
             JSONObject carParkData = carParkDataArray.getJSONObject(dataIndex);
-            CarParkUpdate carParkUpdate = updateCarPark(carParkData);
-            carParkUpdateHashMap.put(carParkData.getString("carpark_number"), carParkUpdate);
+            for (CarPark carPark : carParks)
+                if (carPark.getCarParkNumber().equals(carParkData.getString("carpark_number"))) {
+                    CarParkUpdate carParkUpdate = updateCarPark(carParkData);
+                    carPark.update(carParkUpdate);
+                    updatedCarPark.add(carPark);
+                }
+
         }
 
-        return carParkUpdateHashMap;
+        return updatedCarPark;
     }
 
-    public static HashMap<String, CarParkUpdate> getCarParkAvailablility() {
+    public static ArrayList<CarPark> getCarParkAvailability(ArrayList<CarPark> carParks) {
         String inputLine = "{}";
         inputLine = readFromURL("https://api.data.gov.sg/v1/transport/carpark-availability")
-;        JSONObject obj = new JSONObject(inputLine);
-        return updateAllCarPark(obj);
+        ;
+        JSONObject obj = new JSONObject(inputLine);
+        return updateAllCarPark(obj, carParks);
 
     }
 
