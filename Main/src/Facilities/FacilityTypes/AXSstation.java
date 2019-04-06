@@ -21,21 +21,21 @@ public class AXSstation extends LocationHandler implements FacilityTypes {
 
     }
 
-    public AXSstation(JSONObject jObj){
+    public AXSstation(JSONObject jObj) {
+        super(jObj);
 
-        super(new Location(splitLatLong(jObj.getString("LatLng"))[0],splitLatLong(jObj.getString("LatLng"))[1]));
         facilityType = "AXSstation";
         name = jObj.getString("AXS_ID");
         address = jObj.getString("DESCRIPTION");
-        //For clarity, see the below
-        //String geoLoc = jObj.getString("LatLng");
-        //Double[] xyCor = splitLatLong(geoLoc);
+
     }
 
-    public static JSONObject retrieveTheme(Location location, String APIToken) {
+    public static JSONObject retrieveTheme(Location location, String APIToken, Double Constraint) {
 
         String theme = "axs_station";
-        String URL = "https://developers.onemap.sg/privateapi/themesvc/retrieveTheme?queryName=" + theme + "&token=" + APIToken + "&extents=" + location.getXCoordinate() + ",%20103.7796402," + location.getYCoordinate() + ",%20103.8726032";
+
+        Double[] axisConstraints = retAxisConstraints(location, Constraint);
+        String URL = "https://developers.onemap.sg/privateapi/themesvc/retrieveTheme?queryName=" + theme + "&token=" + APIToken + "&extents=" + axisConstraints[0] +",%20"+axisConstraints[1]+"," + axisConstraints[2] + ",%20"+axisConstraints[3];
 
         String themeRetrieved = readFromURL(URL);
         JSONObject jObj = new JSONObject(themeRetrieved);
@@ -62,11 +62,12 @@ public class AXSstation extends LocationHandler implements FacilityTypes {
     }
 
     public void print() {
-        System.out.println(String.format("\n|%15s : %-45s|", "Name", name));
-        System.out.println(String.format("|%15s : %-45s|", "Address", address));
+        System.out.print("\n\n");
+        systemSplitOutput("Name", name);
+        systemSplitOutput("Address", address);
 
         /* this could be removable */
-        String locationString = Double.toString(location.getXCoordinate()) + ", " + Double.toString(location.getYCoordinate());
-        System.out.println(String.format("|%15s : %-45s|", "Location", locationString));
+//        String locationString = Double.toString(location.getXCoordinate()) + ", " + Double.toString(location.getYCoordinate());
+//        System.out.println(String.format("|%15s : %-45s|", "Location", locationString));
     }
 }

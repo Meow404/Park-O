@@ -30,6 +30,9 @@ public class CarParkUpdate {
     private static ArrayList<CarPark> updateAllCarPark(JSONObject obj, ArrayList<CarPark> carParks) {
 
         //This is due to the format of data obtained from API
+
+        Extra.writeUsingOutputStream(obj.toString(4), "CarPark.txt");
+
         ArrayList<CarPark> updatedCarPark = new ArrayList<>();
         JSONArray items = obj.getJSONArray("items");
         JSONObject firstObject = items.getJSONObject(0);

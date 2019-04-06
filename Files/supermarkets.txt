@@ -1,0 +1,83 @@
+{"SrchResults": [
+    {
+        "Owner": "NATIONAL ENVIRONMENT AGENCY",
+        "Category": "Environment",
+        "Theme_Name": "Supermarkets",
+        "FeatCount": 7,
+        "DateTime": {
+            "date": "2019-01-25 08:29:48.000000",
+            "timezone": "+00:00",
+            "timezone_type": 1
+        }
+    },
+    {
+        "STR_NAME": "TOH GUAN ROAD EAST",
+        "DESCRIPTION": "SW14484J000",
+        "POSTCODE": "608586",
+        "ICON_NAME": "supermarketlogo.jpg",
+        "BLK_HOUSE": "48",
+        "UNIT_NO": "130",
+        "LatLng": "1.33683097371867,103.75434143082",
+        "NAME": "T S J INDUSTRIAL (S) PTE. LTD."
+    },
+    {
+        "STR_NAME": "BUKIT BATOK EAST AVENUE 3",
+        "DESCRIPTION": "SW13Q24X000",
+        "POSTCODE": "650280",
+        "ICON_NAME": "supermarketlogo.jpg",
+        "BLK_HOUSE": "280",
+        "UNIT_NO": "315",
+        "LatLng": "1.34770147779384,103.757044586256",
+        "NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD"
+    },
+    {
+        "STR_NAME": "BUKIT BATOK CENTRAL",
+        "DESCRIPTION": "C02104B000",
+        "POSTCODE": "659958",
+        "ICON_NAME": "supermarketlogo.jpg",
+        "BLK_HOUSE": "10",
+        "UNIT_NO": "8",
+        "LatLng": "1.3487108014327,103.74933452639",
+        "NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD"
+    },
+    {
+        "STR_NAME": "BUKIT BATOK CENTRAL LINK",
+        "DESCRIPTION": "C02046K000",
+        "POSTCODE": "658713",
+        "ICON_NAME": "supermarketlogo.jpg",
+        "BLK_HOUSE": "1",
+        "UNIT_NO": "1",
+        "LatLng": "1.3501891589254,103.749021982726",
+        "NAME": "COLD STORAGE SINGAPORE (1983) PTE LTD"
+    },
+    {
+        "STR_NAME": "TOH GUAN ROAD EAST",
+        "DESCRIPTION": "SW06002X000",
+        "POSTCODE": "608568",
+        "ICON_NAME": "supermarketlogo.jpg",
+        "BLK_HOUSE": "19",
+        "UNIT_NO": "65",
+        "LatLng": "1.33832657868868,103.753536116977",
+        "NAME": "TOH GUAN MINI MART PTE LTD"
+    },
+    {
+        "STR_NAME": "BUKIT BATOK EAST AVENUE 3",
+        "DESCRIPTION": "SW07070J000",
+        "POSTCODE": "650284",
+        "ICON_NAME": "supermarketlogo.jpg",
+        "BLK_HOUSE": "284",
+        "UNIT_NO": "251",
+        "LatLng": "1.34669905043909,103.757276703167",
+        "NAME": "COLD STORAGE SINGAPORE (1983) PTE LTD"
+    },
+    {
+        "STR_NAME": "TOH GUAN ROAD EAST",
+        "DESCRIPTION": "SW14017K000",
+        "POSTCODE": "608596",
+        "ICON_NAME": "supermarketlogo.jpg",
+        "BLK_HOUSE": "18",
+        "UNIT_NO": "2",
+        "LatLng": "1.33641798055282,103.751807387865",
+        "NAME": "SHAFEN SUPERMARKET & TRADING (S) PTE. LTD."
+    }
+]}

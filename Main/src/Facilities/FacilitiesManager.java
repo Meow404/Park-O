@@ -1,5 +1,7 @@
 package Facilities;
+
 import java.util.Scanner;
+
 import Extra.Location.Location;
 import Facilities.FacilityTypes.*;
 import org.json.JSONArray;
@@ -9,6 +11,7 @@ import java.util.ArrayList;
 
 import static Extra.Extra.order;
 import static Extra.Extra.retLongLang;
+import static java.lang.System.exit;
 
 public class FacilitiesManager {
 
@@ -56,63 +59,52 @@ public class FacilitiesManager {
     /* String allThemes = readFromURL("https://developers.onemap.sg/privateapi/themesvc/getAllThemesInfo?token="+APIToken); */
     /* ###################################################################### */
 
-    public static void main(String args[]) {
-        Location location = new Location(); /*for the purpose of completing the code - using mock coordinate*/
-        location.setXCoordinate(1.291789);
-        location.setYCoordinate(1.3290461); /* we still need to do coordinate conversion for xCor and yCor */
-        location.setLatitude((retLongLang(location.getXCoordinate(), location.getYCoordinate())).getLat());
-        location.setLongtitude((retLongLang(location.getXCoordinate(), location.getYCoordinate())).getLong());
+    public static void getFacilities(Location location, Double constraint) {
+//        location.setLatitude((retLongLang(location.getXCoordinate(), location.getYCoordinate())).getLat());
+//        location.setLongtitude((retLongLang(location.getXCoordinate(), location.getYCoordinate())).getLong());
+        int choice;
+        do {
 
+            System.out.println("\n\n    ~ Choose a facility ~");
+            System.out.println("    (1) Hawker Centre");
+            System.out.println("    (2) Supermarket");
+            System.out.println("    (3) AXSstation");
+            System.out.println("    (4) Library");
+            System.out.println("    (5) ExerciseFacility");
+            System.out.println("    (6) Exit");
+            System.out.print("\n      Enter Your Choice : ");
 
-        System.out.println("Choose a facilities");
-        System.out.println("(1) Hawker Centre");
-        System.out.println("(2) Supermarket");
-        System.out.println("(3) AXSstation");
-        System.out.println("(4) Library");
-        System.out.println("(5) ExerciseFacility");
-        Scanner sc = new Scanner(System.in);
-        int choice = sc.nextInt();
-        switch (choice) {
+            Scanner sc = new Scanner(System.in);
+            choice = sc.nextInt();
+            JSONObject results = null;
 
-            case 1:
-                JSONObject results1 = HawkerCentre.retrieveTheme(location, APIToken);
-                ArrayList<FacilityTypes> hawkerCentres = returnFacilities(results1);
-                for (FacilityTypes facilty : hawkerCentres) {
-                    facilty.print();
-                }
-                break;
-
-            case 2:
-                JSONObject results2 = Supermarket.retrieveTheme(location, APIToken);
-                ArrayList<FacilityTypes> supermarkets = returnFacilities(results2);
-                for (FacilityTypes facilty : supermarkets) {
-                    facilty.print();
-                }
-                break;
-            case 3:
-                JSONObject results3 = AXSstation.retrieveTheme(location, APIToken);
-                ArrayList<FacilityTypes> axsStations = returnFacilities(results3);
-                for (FacilityTypes facilty : axsStations) {
-                    facilty.print();
-                }
-                break;
-            case 4:
-                JSONObject results4 = Library.retrieveTheme(location, APIToken);
-                ArrayList<FacilityTypes> libraries = returnFacilities(results4);
-                for (FacilityTypes facilty : libraries) {
-                    facilty.print();
-                }
-                break;
-            case 5:
-                JSONObject results5 = ExerciseFacility.retrieveTheme(location, APIToken);
-                ArrayList<FacilityTypes> exerciseFacilities = returnFacilities(results5);
-                for (FacilityTypes facilty : exerciseFacilities) {
-                    facilty.print();
-                }
-                break;
-
-            default: break;
-        }
-        //order(facilities,location);
+            switch (choice) {
+                case 1:
+                    results = HawkerCentre.retrieveTheme(location, APIToken, constraint);
+                    break;
+                case 2:
+                    results = Supermarket.retrieveTheme(location, APIToken, constraint);
+                    break;
+                case 3:
+                    results = AXSstation.retrieveTheme(location, APIToken, constraint);
+                    break;
+                case 4:
+                    results = Library.retrieveTheme(location, APIToken, constraint);
+                    break;
+                case 5:
+                    results = ExerciseFacility.retrieveTheme(location, APIToken, constraint);
+                    break;
+                case 6:
+                    exit(0);
+                default:
+                    break;
+            }
+            ArrayList<FacilityTypes> facilities = returnFacilities(results);
+            order(facilities,location);
+            for (FacilityTypes facilty : facilities) {
+                facilty.print();
+            }
+            //order(facilities,location);
+        } while (choice != 6);
     }
 }

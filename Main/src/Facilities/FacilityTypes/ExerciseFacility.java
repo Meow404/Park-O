@@ -5,16 +5,12 @@ import Extra.Location.LocationHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import static Extra.Extra.readFromURL;
-import static Extra.Extra.splitLatLong;
-import static Extra.Extra.writeUsingOutputStream;
+import static Extra.Extra.*;
 
 public class ExerciseFacility extends LocationHandler implements FacilityTypes {
     private String facilityType;
     private String name;
     private String address;
-    /* might have to change to xCor, yCor, Lat and Long for all Location location */
-    private Location location;
 
 
     public ExerciseFacility(String name, String address, Double xCor, Double yCor) {
@@ -26,7 +22,7 @@ public class ExerciseFacility extends LocationHandler implements FacilityTypes {
     }
 
     public ExerciseFacility(JSONObject jObj) {
-        super(new Location(splitLatLong(jObj.getString("LatLng"))[0],splitLatLong(jObj.getString("LatLng"))[1]));
+        super(jObj);
         facilityType = "ExerciseFacility";
 
         name = jObj.getString("NAME");
@@ -35,16 +31,15 @@ public class ExerciseFacility extends LocationHandler implements FacilityTypes {
         } catch (JSONException ex) {
             address = "Information Not Available";
         }
-
-        //String geoLoc = jObj.getString("LatLng");
-        //Double[] xyCor = splitLatLong(geoLoc);
     }
 
-    public static JSONObject retrieveTheme(Location location, String APIToken) {
+    public static JSONObject retrieveTheme(Location location, String APIToken, Double constraint) {
 
         String theme = "exercisefacilities";
-        String URL = "https://developers.onemap.sg/privateapi/themesvc/retrieveTheme?queryName=" + theme + "&token=" + APIToken + "&extents=" + location.getXCoordinate() + ",%20103.7796402," + location.getYCoordinate() + ",%20103.8726032"
-                ;
+
+        Double[] axisConstraints = retAxisConstraints(location, constraint);
+        String URL = "https://developers.onemap.sg/privateapi/themesvc/retrieveTheme?queryName=" + theme + "&token=" + APIToken + "&extents=" + axisConstraints[0] + ",%20" + axisConstraints[1] + "," + axisConstraints[2] + ",%20" + axisConstraints[3];
+
 
         String themeRetrieved = readFromURL(URL);
         JSONObject jObj = new JSONObject(themeRetrieved);
@@ -71,11 +66,12 @@ public class ExerciseFacility extends LocationHandler implements FacilityTypes {
     }
 
     public void print() {
-        System.out.println(String.format("\n|%15s : %-45s|", "Name", name));
-        System.out.println(String.format("|%15s : %-45s|", "Address", address));
+        System.out.print("\n\n");
+        systemSplitOutput("Name", name);
+        systemSplitOutput("Address", address);
 
         /* this could be removable */
-        String locationString = Double.toString(location.getXCoordinate()) + ", " + Double.toString(location.getYCoordinate());
-        System.out.println(String.format("|%15s : %-45s|", "Location", locationString));
+//        String locationString = Double.toString(location.getXCoordinate()) + ", " + Double.toString(location.getYCoordinate());
+//        System.out.println(String.format("|%15s : %-45s|", "Location", locationString));
     }
 }

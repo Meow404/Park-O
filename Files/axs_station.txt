@@ -1,0 +1,125 @@
+{"SrchResults": [
+    {
+        "Owner": "SINGAPORE LAND AUTHORITY",
+        "Category": "Community",
+        "Theme_Name": "AXS Station",
+        "FeatCount": 14,
+        "DateTime": {
+            "date": "2018-12-04 02:25:42.000000",
+            "timezone": "+00:00",
+            "timezone_type": 1
+        }
+    },
+    {
+        "AXS_ID": "JRC010",
+        "DESCRIPTION": "JURONG TOWN COUNCIL,BUKIT BATOK CENTRAL,SINGAPORE 650630",
+        "ICON_NAME": "redStation.png",
+        "LatLng": "1.35024905168879,103.75007629419",
+        "LATITUDE": "1.3502490520500001",
+        "NAME": "AXS Station"
+    },
+    {
+        "AXS_ID": "MRT037",
+        "DESCRIPTION": "BUKIT BATOK MRT STATION,10 BUKIT BATOK CENTRAL,SINGAPORE 659958",
+        "ICON_NAME": "redStation.png",
+        "LatLng": "1.34858405621035,103.749450683293",
+        "LATITUDE": "1.3485840559000002",
+        "NAME": "AXS Station"
+    },
+    {
+        "AXS_ID": "DBS171",
+        "DESCRIPTION": "POSB BLK 636 BUKIT BATOK,BUKIT BATOK CENTRAL,SINGAPORE 650636",
+        "ICON_NAME": "redStation.png",
+        "LatLng": "1.34960901724713,103.751770019873",
+        "LATITUDE": "1.3496090173700002",
+        "NAME": "AXS Station"
+    },
+    {
+        "AXS_ID": "S11012",
+        "DESCRIPTION": "S11 BUKIT BATOK CENTRAL BLOCK 640,BUKIT BATOK CENTRAL,SINGAPORE 650640",
+        "ICON_NAME": "redStation.png",
+        "LatLng": "1.34941303767752,103.751678466539",
+        "LATITUDE": "1.3494130373000002",
+        "NAME": "AXS Station"
+    },
+    {
+        "AXS_ID": "DBS032",
+        "DESCRIPTION": "POSB BUKIT BATOK EAST,BUKIT BATOK EAST AVENUE 4 LEVEL 1,SINGAPORE 650272",
+        "ICON_NAME": "redStation.png",
+        "LatLng": "1.34870100001113,103.757637023637",
+        "LATITUDE": "1.34870100021",
+        "NAME": "AXS Station"
+    },
+    {
+        "AXS_ID": "SNS001",
+        "DESCRIPTION": "GIANT BUKIT BATOK,BUKIT BATOK EAST AVENUE 3 ,SINGAPORE 650284",
+        "ICON_NAME": "redStation.png",
+        "LatLng": "1.34675896205864,103.757255554575",
+        "LATITUDE": "1.34675896168",
+        "NAME": "AXS Station"
+    },
+    {
+        "AXS_ID": "WML001",
+        "DESCRIPTION": "WEST MALL,1 BUKIT BATOK CENTRAL LEVEL 1,SINGAPORE 658713",
+        "ICON_NAME": "redStation.png",
+        "LatLng": "1.34951996792742,103.749671936483",
+        "LATITUDE": "1.34951996803",
+        "NAME": "AXS Station"
+    },
+    {
+        "AXS_ID": "WEG001",
+        "DESCRIPTION": "WCEGA PLAZA,1 BUKIT BATOK CRESCENT LEVEL 1,SINGAPORE 658064",
+        "ICON_NAME": "redStation.png",
+        "LatLng": "1.33860397310294,103.759918212742",
+        "LATITUDE": "1.33860397339",
+        "NAME": "AXS Station"
+    },
+    {
+        "AXS_ID": "WEG002",
+        "DESCRIPTION": "WCEGA TOWER,21 BUKIT BATOK CRESCENT LEVEL 1 ,SINGAPORE 658065",
+        "ICON_NAME": "redStation.png",
+        "LatLng": "1.33692204915516,103.759590149068",
+        "LATITUDE": "1.33692204952",
+        "NAME": "AXS Station"
+    },
+    {
+        "AXS_ID": "BBF001",
+        "DESCRIPTION": "BB 289 FOODHOUSE,BUKIT BATOK STREET 25,SINGAPORE 657289",
+        "ICON_NAME": "redStation.png",
+        "LatLng": "1.34450900544666,103.760040283162",
+        "LATITUDE": "1.34450900555",
+        "NAME": "AXS Station"
+    },
+    {
+        "AXS_ID": "SHL017",
+        "DESCRIPTION": "SHELL BUKIT BATOK NATURE PARK,28 BUKIT BATOK EAST AVENUE 6,SINGAPORE 659760",
+        "ICON_NAME": "redStation.png",
+        "LatLng": "1.34764301732374,103.764953613583",
+        "LATITUDE": "1.34764301777",
+        "NAME": "AXS Station"
+    },
+    {
+        "AXS_ID": "ACL001",
+        "DESCRIPTION": "ACACIA LODGE,540 BUKIT BATOK STREET 23,SINGAPORE 659553",
+        "ICON_NAME": "redStation.png",
+        "LatLng": "1.3398020270427,103.756027221929",
+        "LATITUDE": "1.3398020267500002",
+        "NAME": "AXS Station"
+    },
+    {
+        "AXS_ID": "CTD001",
+        "DESCRIPTION": "WESTLITE DORMITORY - BLK 14,18 TOH GUAN ROAD LEVEL 1,SINGAPORE 608591",
+        "ICON_NAME": "redStation.png",
+        "LatLng": "1.33582997292392,103.751472472847",
+        "LATITUDE": "1.33582997322",
+        "NAME": "AXS Station"
+    },
+    {
+        "AXS_ID": "EPH001",
+        "DESCRIPTION": "ENTERPRISE HUB,48 TOH GUAN ROAD EAST LEVEL 1,SINGAPORE 608586",
+        "ICON_NAME": "redStation.png",
+        "LatLng": "1.33697903126918,103.754219055148",
+        "LATITUDE": "1.33697903156",
+        "NAME": "AXS Station"
+    }
+]}

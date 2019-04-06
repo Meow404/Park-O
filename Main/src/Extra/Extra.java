@@ -12,6 +12,7 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import static java.lang.System.exit;
 
@@ -22,7 +23,8 @@ public class Extra {
     public static void writeUsingOutputStream(String data, String fileName) {
         OutputStream os = null;
         try {
-            os = new FileOutputStream(new File(fileName));
+
+            os = new FileOutputStream(new File("Files//" + fileName));
             os.write(data.getBytes(), 0, data.length());
         } catch (IOException e) {
             e.printStackTrace();
@@ -114,10 +116,11 @@ public class Extra {
     }
 
     public static void order(ArrayList objects, Location curLocation) {
+        if (objects.size() > 1)
             for (int i = 0; i < objects.size(); i++)
                 for (int j = 0; j < objects.size() - i - 1; j++) {
-                    LocationHandler object1 = (LocationHandler)objects.get(j);
-                    LocationHandler object2 = (LocationHandler)objects.get(j+1);
+                    LocationHandler object1 = (LocationHandler) objects.get(j);
+                    LocationHandler object2 = (LocationHandler) objects.get(j + 1);
                     if (distance(object1.getLocation(), curLocation) > distance(object2.getLocation(), curLocation))
                         Collections.swap(objects, j, j + 1);
 
@@ -127,5 +130,33 @@ public class Extra {
     public static void printLoadingBar(int percentage) {
         System.out.print("\b\b");
         System.out.print(String.format("%3d ", percentage));
+    }
+
+    public static void systemSplitOutput(String Values, String message) {
+
+        for (int i = 0; message.length() > 45 * i; i++) {
+            String temp;
+            if (message.length() < 45 * (i + 1))
+                temp = message.substring(45 * i);
+            else
+                temp = message.substring(45 * i, 45 * (i + 1));
+
+            System.out.println(String.format("|%15s : %-45s|", Values, temp.trim()));
+        }
+
+    }
+
+    public static Double[] retAxisConstraints(Location curLocation, Double constraints) {
+        Double[] axisConstraints = new Double[4];
+
+        Double xConstant = 0.00899364881;
+        Double yConstant = 0.0089961189;
+
+        axisConstraints[0] = curLocation.getXCoordinate() - xConstant;
+        axisConstraints[1] = curLocation.getYCoordinate() - yConstant;
+        axisConstraints[2] = curLocation.getXCoordinate() + xConstant;
+        axisConstraints[3] = curLocation.getYCoordinate() + yConstant;
+
+        return axisConstraints;
     }
 }

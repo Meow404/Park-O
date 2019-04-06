@@ -1,0 +1,28 @@
+{"SrchResults": [
+    {
+        "Owner": "NATIONAL LIBRARY BOARD",
+        "Category": "Culture",
+        "Theme_Name": "Libraries",
+        "FeatCount": 1,
+        "DateTime": {
+            "date": "2017-11-23 09:50:33.000000",
+            "timezone": "+00:00",
+            "timezone_type": 1
+        }
+    },
+    {
+        "ADDRESSFLOORNUMBER": "3",
+        "ICON_NAME": "library.gif",
+        "ADDRESSBLOCKHOUSENUMBER": "1",
+        "ADDRESSUNITNUMBER": "1",
+        "NAME": "Bukit Batok Public Library",
+        "PHOTOURL": "http://www.nlb.gov.sg/Portals/0/library/gallery/BukitBatok/MAIN-BBPL-cropped.jpg",
+        "DESCRIPTION": "BBPL",
+        "ADDRESSSTREETNAME": "Bukit Batok Central Link",
+        "ADDRESSPOSTALCODE": "658713",
+        "HYPERLINK": "http://www.nlb.gov.sg/VisitUs/BranchDetails/tabid/140/bid/286/Default.aspx?branch=Bukit+Batok+Public+Library",
+        "LANDXADDRESSPOINT": "18618.73039",
+        "LatLng": "1.3501891589254,103.749021982726",
+        "LANDYADDRESSPOINT": "36922.73592"
+    }
+]}
