@@ -1,1 +1,67 @@
-{}
+{"SrchResults": [
+    {
+        "Owner": "NATIONAL LIBRARY BOARD",
+        "Category": "Culture",
+        "Theme_Name": "Libraries",
+        "FeatCount": 4,
+        "DateTime": {
+            "date": "2017-11-23 09:50:33.000000",
+            "timezone": "+00:00",
+            "timezone_type": 1
+        }
+    },
+    {
+        "DESCRIPTION": "CTPL",
+        "ADDRESSSTREETNAME": "Victoria Street (Basement 1)",
+        "ADDRESSPOSTALCODE": "188064",
+        "ICON_NAME": "library.gif",
+        "ADDRESSBLOCKHOUSENUMBER": "100",
+        "HYPERLINK": "http://www.nlb.gov.sg/VisitUs/BranchDetails/tabid/140/bid/289/Default.aspx?branch=Central+Public+Library",
+        "LANDXADDRESSPOINT": "30295.23698",
+        "LatLng": "1.2974897621457,103.853942296057",
+        "NAME": "Central Public Library",
+        "PHOTOURL": "http://www.nlb.gov.sg/Portals/0/library/gallery/Central/MAIN-CTPL-cropped.jpg",
+        "LANDYADDRESSPOINT": "31095.3537"
+    },
+    {
+        "DESCRIPTION": "National Library Level 7-13",
+        "ADDRESSSTREETNAME": "Victoria Street",
+        "ADDRESSPOSTALCODE": "188064",
+        "ICON_NAME": "library.gif",
+        "ADDRESSBLOCKHOUSENUMBER": "100",
+        "HYPERLINK": "http://www.nlb.gov.sg/VisitUs/BranchDetails/tabid/140/bid/329/Default.aspx?branch=National+Library+%2f+Lee+Kong+Chian+Reference+Library",
+        "LANDXADDRESSPOINT": "30295.23698",
+        "LatLng": "1.2974897621457,103.853942296057",
+        "NAME": "National Library Building",
+        "PHOTOURL": "http://www.nlb.gov.sg/Portals/0/IMG/Managers/NL%20Visit%20Us%20Photo.jpg",
+        "LANDYADDRESSPOINT": "31095.3537"
+    },
+    {
+        "DESCRIPTION": "QUPL",
+        "ADDRESSSTREETNAME": "Margaret Drive",
+        "ADDRESSPOSTALCODE": "149297",
+        "ICON_NAME": "library.gif",
+        "ADDRESSBLOCKHOUSENUMBER": "53",
+        "HYPERLINK": "http://www.nlb.gov.sg/VisitUs/BranchDetails/tabid/140/bid/309/Default.aspx?branch=Queenstown+Public+Library",
+        "LANDXADDRESSPOINT": "24896.33976",
+        "LatLng": "1.29864022184643,103.805430811287",
+        "NAME": "Queenstown Public Library",
+        "PHOTOURL": "http://www.nlb.gov.sg/Portals/0/library/gallery/QueensTown/Main-QUPL_Cropped.jpg",
+        "LANDYADDRESSPOINT": "31222.57336"
+    },
+    {
+        "ADDRESSFLOORNUMBER": "3",
+        "ICON_NAME": "library.gif",
+        "ADDRESSBLOCKHOUSENUMBER": "277",
+        "ADDRESSUNITNUMBER": "12",
+        "NAME": "library@orchard",
+        "PHOTOURL": "http://www.nlb.gov.sg/Portals/0/library/gallery/Orchard/OCPL_main.jpg",
+        "DESCRIPTION": "OCPL",
+        "ADDRESSSTREETNAME": "Orchard Road (Orchard Gateway)",
+        "ADDRESSPOSTALCODE": "238858",
+        "HYPERLINK": "http://www.nlb.gov.sg/VisitUs/BranchDetails/tabid/140/bid/337/Default.aspx?branch=library%40orchard",
+        "LANDXADDRESSPOINT": "28657.22801",
+        "LatLng": "1.30050955540067,103.839224069817",
+        "LANDYADDRESSPOINT": "31429.25827"
+    }
+]}
