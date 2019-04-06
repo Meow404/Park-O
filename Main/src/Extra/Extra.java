@@ -110,7 +110,7 @@ public class Extra {
         double lat = (Double) locObject.get("latitude");
         double lon = (Double) locObject.get("longitude");
 
-        return new Location(lat, lon);
+        return new Location(x, y, lat, lon);
     }
 
     public static void order(ArrayList objects, Location curLocation) {

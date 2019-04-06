@@ -43,7 +43,8 @@ public class ExerciseFacility extends LocationHandler implements FacilityTypes {
     public static JSONObject retrieveTheme(Location location, String APIToken) {
 
         String theme = "exercisefacilities";
-        String URL = "https://developers.onemap.sg/privateapi/themesvc/retrieveTheme?queryName=" + theme + "&token=" + APIToken + "&extents=" + location.getXCoordinate() + ",%20103.7796402," + location.getYCoordinate() + ",%20103.8726032";
+        String URL = "https://developers.onemap.sg/privateapi/themesvc/retrieveTheme?queryName=" + theme + "&token=" + APIToken + "&extents=" + location.getXCoordinate() + ",%20103.7796402," + location.getYCoordinate() + ",%20103.8726032"
+                ;
 
         String themeRetrieved = readFromURL(URL);
         JSONObject jObj = new JSONObject(themeRetrieved);

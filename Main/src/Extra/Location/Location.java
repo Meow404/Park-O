@@ -21,20 +21,34 @@ public class Location {
         zipCode = 0 ;
     }
 
-    public double getXCoordinate() {
-        return xCoordinate;
-    }
-
-    public double getYCoordinate() {
-        return yCoordinate;
-    }
-
-    public void setXCoordinate(double xCoordinate) {
+    public Location(double xCoordinate, double yCoordinate, double Lat, double Long) {
         this.xCoordinate = xCoordinate;
+        this.yCoordinate = yCoordinate;
+        this.latitude = Lat;
+        this.longtitude = Long;
+        zipCode = 0 ;
     }
 
-    public void setYCoordinate(double yCoordinate) {
-        this.yCoordinate = yCoordinate;
+    public double getXCoordinate() { return xCoordinate; }
+
+    public double getYCoordinate() { return yCoordinate; }
+
+    public void setXCoordinate(double xCoordinate) { this.xCoordinate = xCoordinate; }
+
+    public void setYCoordinate(double yCoordinate) { this.yCoordinate = yCoordinate; }
+
+    public double getLat() {
+        return latitude;
+    }
+
+    public double getLong() { return longtitude; }
+
+    public void setLatitude(double Lat) {
+        this.latitude = Lat;
+    }
+
+    public void setLongtitude(double Long) {
+        this.longtitude = Long;
     }
 
     public int getLocation() {
