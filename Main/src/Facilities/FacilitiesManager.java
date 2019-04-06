@@ -7,6 +7,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import static Extra.Extra.order;
+
 public class FacilitiesManager {
 
     private static String APIToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjI1NDAsInVzZXJfaWQiOjI1NDAsImVtYWlsIjoiYWxmcmVkaGh3QGdtYWlsLmNvbSIsImZvcmV2ZXIiOmZhbHNlLCJpc3MiOiJodHRwOlwvXC9vbTIuZGZlLm9uZW1hcC5zZ1wvYXBpXC92MlwvdXNlclwvc2Vzc2lvbiIsImlhdCI6MTU1NDUzMzg1MSwiZXhwIjoxNTU0OTY1ODUxLCJuYmYiOjE1NTQ1MzM4NTEsImp0aSI6IjllYWVkM2IxNzczZmJkZmYxZjU4NmFjM2ZhODZiOTdiIn0.v8Eax8FIzaDK_HgxfhEJotuIIaa2fX_6lxdm1-4q_Xk";
@@ -61,7 +63,7 @@ public class FacilitiesManager {
 
         JSONObject results = HawkerCentre.retrieveTheme(location, APIToken);
         ArrayList<FacilityTypes> facilities = returnFacilities(results);
-
+        //order(facilities,location);
         for (FacilityTypes facilty : facilities)
             facilty.print();
     }

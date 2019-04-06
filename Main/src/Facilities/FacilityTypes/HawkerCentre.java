@@ -1,13 +1,14 @@
 package Facilities.FacilityTypes;
 
 import Extra.Location.Location;
+import Extra.Location.LocationHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import static Extra.Extra.readFromURL;
 import static Extra.Extra.writeUsingOutputStream;
 
-public class HawkerCentre implements FacilityTypes {
+public class HawkerCentre extends LocationHandler implements FacilityTypes {
     private String facilityType;
     private String name;
     private String address;
@@ -16,6 +17,7 @@ public class HawkerCentre implements FacilityTypes {
 
 
     public HawkerCentre(String name, String address, Double xCor, Double yCor) {
+        super(new Location(xCor, yCor));
         facilityType = "HawkerCentre";
         this.name = name;
         this.address = address;
@@ -23,6 +25,7 @@ public class HawkerCentre implements FacilityTypes {
     }
 
     public HawkerCentre(JSONObject jObj) {
+        super(new Location(Double.parseDouble(jObj.getString("LATITUDE")),Double.parseDouble(jObj.getString("LONGITUDE"))));
         facilityType = "HawkerCentre";
 
         name = jObj.getString("NAME");

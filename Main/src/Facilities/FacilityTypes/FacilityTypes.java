@@ -1,6 +1,7 @@
 package Facilities.FacilityTypes;
 
 import Extra.Location.Location;
+import Extra.Location.LocationHandler;
 
 public interface FacilityTypes {
     String retType();

@@ -1,6 +1,7 @@
 package Facilities.FacilityTypes;
 
 import Extra.Location.Location;
+import Extra.Location.LocationHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -8,7 +9,7 @@ import static Extra.Extra.readFromURL;
 import static Extra.Extra.splitLatLong;
 import static Extra.Extra.writeUsingOutputStream;
 
-public class ExerciseFacility implements FacilityTypes {
+public class ExerciseFacility extends LocationHandler implements FacilityTypes {
     private String facilityType;
     private String name;
     private String address;
@@ -17,13 +18,15 @@ public class ExerciseFacility implements FacilityTypes {
 
 
     public ExerciseFacility(String name, String address, Double xCor, Double yCor) {
+        super(new Location(xCor, yCor));
         facilityType = "ExerciseFacility";
         this.name = name;
         this.address = address;
-        this.location = new Location(xCor, yCor);
+
     }
 
     public ExerciseFacility(JSONObject jObj) {
+        super(new Location(splitLatLong(jObj.getString("LatLng"))[0],splitLatLong(jObj.getString("LatLng"))[1]));
         facilityType = "ExerciseFacility";
 
         name = jObj.getString("NAME");
@@ -33,9 +36,8 @@ public class ExerciseFacility implements FacilityTypes {
             address = "Information Not Available";
         }
 
-        String geoLoc = jObj.getString("LatLng");
-        Double[] xyCor = splitLatLong(geoLoc);
-        location = new Location(xyCor[0], xyCor[1]);
+        //String geoLoc = jObj.getString("LatLng");
+        //Double[] xyCor = splitLatLong(geoLoc);
     }
 
     public static JSONObject retrieveTheme(Location location, String APIToken) {

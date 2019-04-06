@@ -1,34 +1,35 @@
 package Facilities.FacilityTypes;
 
 import Extra.Location.Location;
+import Extra.Location.LocationHandler;
 import org.json.JSONObject;
 
 import static Extra.Extra.*;
 
-public class AXSstation implements FacilityTypes {
+public class AXSstation extends LocationHandler implements FacilityTypes {
     private String facilityType;
     private String name;
     private String address;
     /* might have to change to xCor, yCor, Lat and Long for all Location location */
-    private Location location;
 
 
     public AXSstation(String name, String address, Double xCor, Double yCor) {
+        super(new Location(xCor, yCor));
         facilityType = "AXSstation";
         this.name = name;
         this.address = address;
-        this.location = new Location(xCor, yCor);
+
     }
 
     public AXSstation(JSONObject jObj){
-        facilityType = "AXSstation";
 
+        super(new Location(splitLatLong(jObj.getString("LatLng"))[0],splitLatLong(jObj.getString("LatLng"))[1]));
+        facilityType = "AXSstation";
         name = jObj.getString("AXS_ID");
         address = jObj.getString("DESCRIPTION");
-
-        String geoLoc = jObj.getString("LatLng");
-        Double[] xyCor = splitLatLong(geoLoc);
-        location = new Location(xyCor[0],xyCor[1]);
+        //For clarity, see the below
+        //String geoLoc = jObj.getString("LatLng");
+        //Double[] xyCor = splitLatLong(geoLoc);
     }
 
     public static JSONObject retrieveTheme(Location location, String APIToken) {
