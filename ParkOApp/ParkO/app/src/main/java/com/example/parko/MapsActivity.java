@@ -14,6 +14,8 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -58,6 +60,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     boolean[] set = new boolean[4];
     ImageButton carParks, cycleParks, trafficIncident, facilities;
     LatLng myPosition;
+    RecyclerView mRecyclerView;
+    RecyclerView.LayoutManager mLayoutManager;
+    RecyclerView.Adapter mAdapter;
 
 
 //    public Bitmap createCustomMarker(@DrawableRes int resource, String _name) {
@@ -92,6 +97,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         trafficIncident = (ImageButton) findViewById(R.id.trafficIncident);
         facilities = (ImageButton) findViewById(R.id.facilities);
 
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -102,6 +109,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //                                    .apiKey(getString(R.string.google_maps_api_key))
 //                                    .build();
 //        }
+
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
 
         carParks.setOnClickListener(this);
         cycleParks.setOnClickListener(this);
@@ -258,6 +269,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 BBM3.setTag("CarPark");
             }
+            mAdapter = new MapAdapter(carParks);
+            mRecyclerView.setAdapter(mAdapter);
         }
     }
 
