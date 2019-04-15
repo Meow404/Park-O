@@ -1,0 +1,74 @@
+[
+    {
+        "Type": "Vehicle breakdown",
+        "Message": "(6/4)21:52 Vehicle breakdown in CTE Tunnel (towards AYE) before Orchard Rd Exit.",
+        "Latitude": 1.3047589163248026,
+        "Longitude": 103.84012380347424
+    },
+    {
+        "Type": "Roadwork",
+        "Message": "(6/4)21:42 Roadworks on International Road (towards Soon Lee Road) after Pioneer Road North. Avoid left lane.",
+        "Latitude": 1.3277799487766664,
+        "Longitude": 103.6979396331578
+    },
+    {
+        "Type": "Vehicle breakdown",
+        "Message": "(6/4)21:40 Vehicle breakdown on AYE (towards Tuas) at Keppel Rd Entrance.",
+        "Latitude": 1.2742433911950584,
+        "Longitude": 103.82978131270829
+    },
+    {
+        "Type": "Roadwork",
+        "Message": "(6/4)21:38 Roadworks on CTE (towards AYE) at PIE(Changi) Exit.",
+        "Latitude": 1.3438603346428997,
+        "Longitude": 103.86050300679443
+    },
+    {
+        "Type": "Roadwork",
+        "Message": "(6/4)21:35 Roadworks on PIE (towards Tuas) after Changi South Ave 3. Avoid lane 3.",
+        "Latitude": 1.3432258785831261,
+        "Longitude": 103.96943654449117
+    },
+    {
+        "Type": "Roadwork",
+        "Message": "(6/4)21:28 Roadworks on Ulu Pandan Road (towards Pandan Valley) after Pine Grove.",
+        "Latitude": 1.3207572009831199,
+        "Longitude": 103.77624513633573
+    },
+    {
+        "Type": "Roadwork",
+        "Message": "(6/4)21:24 Roadworks on AYE (towards Tuas) before Normanton Exit. Avoid lane 1.",
+        "Latitude": 1.2867707334377076,
+        "Longitude": 103.7965371826076
+    },
+    {
+        "Type": "Roadwork",
+        "Message": "(6/4)20:41 Roadworks on Robinson Road (towards Mccallum Street) after Maxwell Road. Avoid right lane.",
+        "Latitude": 1.2770994099311956,
+        "Longitude": 103.84774738501841
+    },
+    {
+        "Type": "Roadwork",
+        "Message": "(6/4)20:34 Roadworks on Jalan Buroh (towards City) after Jurong Pier Road.",
+        "Latitude": 1.3144041690687727,
+        "Longitude": 103.71412392372723
+    },
+    {
+        "Type": "Roadwork",
+        "Message": "(6/4)18:45 Roadworks on Sims Avenue (toward Changi) after Aljunied Road. Avoid left lane.",
+        "Latitude": 1.316800116826256,
+        "Longitude": 103.89168711149517
+    },
+    {
+        "Type": "Roadwork",
+        "Message": "(6/4)16:49 Roadworks on Mandai Road towards SLE.",
+        "Latitude": 1.4160595487178458,
+        "Longitude": 103.80138374658816
+    },
+    {
+        "Type": "Roadwork",
+        "Message": "(6/4)14:28 Roadworks on Bartley Slip Road East near Bartley Road East/Hougang Avenue 3 Junction.",
+        "Latitude": 1.3438352783543792,
+        "Longitude": 103.89125390375357
+    }
+]
