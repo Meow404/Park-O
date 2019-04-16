@@ -6,7 +6,7 @@
     density="420dpi"
     format="10"
     plugin-version="3.3.2"
-    timestamp="1555440269643"
+    timestamp="1555451833304"
     token="2711940010676797443"
     verifier="COLD_SWAP_REQUESTED" >
 
@@ -29,11 +29,8 @@
 
     <build
         build-mode="FULL"
-        timestamp="1555436877188"
+        timestamp="1555446938976"
         verifier="FULL_BUILD_REQUESTED" >
-        <artifact
-            location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\resources\instant-run\debug\resources-debug.apk"
-            type="SPLIT" />
         <artifact
             location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
             type="SPLIT" />
@@ -50,6 +47,9 @@
             location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
             type="SPLIT" />
         <artifact
+            location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\resources\instant-run\debug\resources-debug.apk"
+            type="SPLIT" />
+        <artifact
             location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
             type="SPLIT" />
         <artifact
@@ -59,10 +59,10 @@
             location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
+            location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
@@ -74,13 +74,13 @@
     <build
         build-mode="COLD"
         ir-eligibility="R_CLASS_CHANGE"
-        timestamp="1555439233459"
+        timestamp="1555451656389"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
@@ -92,13 +92,16 @@
             location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
             type="SPLIT" />
         <artifact
+            location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            type="SPLIT" />
+        <artifact
             location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
@@ -106,16 +109,7 @@
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="R_CLASS_CHANGE"
-        timestamp="1555440072208"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
-            type="SPLIT" />
-    </build>
-    <build
-        build-mode="COLD"
-        timestamp="1555440269643"
+        timestamp="1555451833304"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\Celine Nakamura\Desktop\Software_Engineering\Park-O\ParkOApp\ParkO\app\build\intermediates\resources\instant-run\debug\resources-debug.apk"

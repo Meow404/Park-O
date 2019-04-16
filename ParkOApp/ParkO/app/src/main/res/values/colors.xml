@@ -7,11 +7,12 @@
     <color name="navy_blue">#1c4587</color>
     <color name="main_color">#febf01</color>
     <color name="blueLight">#9adffe</color>
-    <color name="blue">#1db5fe</color>
+    <color name="blue">#019ce4</color>
     <color name="blueDarker">#019ce4</color>
-    <color name="yellow">#ffecb3</color>
+    <color name="yellow">#fff7e6</color>
     <color name="off">#f2f2f2</color>
     <color name="black">#000000</color>
+    <color name="tinttext">#9900394c</color>
 
     <color name="grey">#999999</color>
     <color name="blue_grey">#607d8b</color>

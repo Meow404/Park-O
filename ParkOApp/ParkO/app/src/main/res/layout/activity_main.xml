@@ -8,10 +8,7 @@
     android:paddingTop="18dp"
     android:paddingRight="18dp"
     android:paddingBottom="18dp"
-    android:background="@drawable/car_home"
-    android:backgroundTint="@color/blue"
-    android:backgroundTintMode="multiply"
-    >
+    android:background="@drawable/car_home_blue">
 
 
     <android.support.constraint.ConstraintLayout
@@ -77,11 +74,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
             android:fontFamily="sans-serif-black"
             android:text="Park'O"
@@ -89,9 +82,6 @@
             android:textColor="@color/white"
             android:textSize="70dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView3"
             app:layout_constraintVertical_bias="0.664" />
 
