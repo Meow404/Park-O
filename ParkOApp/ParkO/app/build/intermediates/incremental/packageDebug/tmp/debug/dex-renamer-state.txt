@@ -1,4 +1,10 @@
-#Tue Apr 16 14:28:21 SGT 2019
-base.0=C\:\\Users\\steph\\Desktop\\New folder\\ParkO\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out
+#Tue Apr 16 19:14:46 SGT 2019
+path.2=classes2.dex
+path.1=classes.dex
 path.0=classes.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
 renamed.0=classes.dex
+base.2=C\:\\Users\\steph\\Documents\\New folder\\Park-O\\ParkOApp\\ParkO\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out
+base.1=C\:\\Users\\steph\\Documents\\New folder\\Park-O\\ParkOApp\\ParkO\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out
+base.0=C\:\\Users\\steph\\Documents\\New folder\\Park-O\\ParkOApp\\ParkO\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out

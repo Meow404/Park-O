@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -14,18 +15,23 @@ import android.widget.Toast;
 import com.example.parko.R;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Register extends AppCompatActivity implements View.OnClickListener {
 
     Button bRegister;
-    EditText username, password, confirmPassword, Email;
+    EditText username, password, confirmPassword, Email, phoneNumber, NRIC;
     //private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
 
@@ -37,10 +43,14 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_signup);
 
-        Email = (EditText) findViewById(R.id.userID);
-        password = (EditText) findViewById(R.id.phoneNumber);
-        confirmPassword = (EditText) findViewById(R.id.register_confirmpassowrd);
-        username = (EditText) findViewById(R.id.userNameProfile);
+        Email = (EditText) findViewById(R.id.emailID);
+        password = (EditText) findViewById(R.id.password1);
+        confirmPassword = (EditText) findViewById(R.id.password2);
+        username = (EditText) findViewById(R.id.regUserName);
+        phoneNumber = (EditText) findViewById(R.id.phoneNumber);
+        NRIC = (EditText) findViewById(R.id.nric);
+
+
         bRegister = (Button) findViewById(R.id.bRegister);
 
         mAuth = FirebaseAuth.getInstance();
@@ -51,86 +61,105 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        if (mAuth.getCurrentUser() != null) {
-            //startActivity(new Intent(this, MapsActivity.class));
-        }
-    }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bRegister:
-                if (registerUser())
-                    startActivity(new Intent(this, MapsActivity.class));
+                registerUser();
                 break;
         }
 
     }
 
-    private boolean registerUser() {
+    private void registerUser() {
         final String name = username.getText().toString().trim();
         final String email = Email.getText().toString().trim();
-        final String password = confirmPassword.getText().toString().trim();
+        final String userPassword = password.getText().toString().trim();
+        final String conPassword = confirmPassword.getText().toString().trim();
+        final String contact = phoneNumber.getText().toString().trim();
+        final String userNRIC = NRIC.getText().toString().trim();
 
         if (name.isEmpty()) {
             username.setError(getString(R.string.input_error_name));
             username.requestFocus();
-            return false;
+            return;
         }
 
         if (email.isEmpty()) {
             Email.setError(getString(R.string.input_error_email));
             Email.requestFocus();
-            return false;
+            return;
         }
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             Email.setError(getString(R.string.input_error_email_invalid));
             Email.requestFocus();
-            return false;
+            return;
         }
 
-        if (password.isEmpty()) {
-            Email.setError(getString(R.string.input_error_password));
-            Email.requestFocus();
-            return false;
+        if (userPassword.isEmpty()) {
+            password.setError(getString(R.string.input_error_password));
+            password.requestFocus();
+            return;
         }
 
-        if (password.length() < 6) {
-            Email.setError(getString(R.string.input_error_password_length));
-            Email.requestFocus();
-            return false;
+        if (userPassword.length() < 6) {
+            password.setError(getString(R.string.input_error_password_length));
+            password.requestFocus();
+            return;
         }
 
-        if (password.equals(confirmPassword)) {
-            Email.setError("Password Mismatch");
-            Email.requestFocus();
-            return false;
+        if (!userPassword.equals(conPassword)) {
+            password.setError("Password Mismatch");
+            password.requestFocus();
+            return;
         }
 
-        // progressBar.setVisibility(View.VISIBLE);
-        System.out.print("Last");
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+
+        mAuth.createUserWithEmailAndPassword(email, userPassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     FirebaseUser user = mAuth.getCurrentUser();
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    DatabaseReference myRef = database.getReference("message");
-
-                    myRef.setValue("Hello, World!");
+                    addData(email,name,  contact, userNRIC);;
+                    startActivity(new Intent(Register.this, MapsActivity.class));
 
                 } else {
-                    Toast.makeText(Register.this, "Authentication failed.",
+                    Toast.makeText(Register.this, "User Already Exists.",
                             Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Register.this,Register.class));
                 }
             }
         });
-        return true;
+
+    }
+
+    private void addData(String email, String username, String contact, String nric) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        // Create a new user with a first and last name
+        Map<String, Object> userMap = new HashMap<>();
+        userMap.put("email", email);
+        userMap.put("username", username);
+        userMap.put("contact", contact);
+        userMap.put("nric", nric);
+
+// Add a new document with a generated ID
+        db.collection("users")
+                .add(userMap)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d("1001", "DocumentSnapshot added with ID: " + documentReference.getId());
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("1002", "Error adding document", e);
+                    }
+                });
     }
 
 

@@ -56,6 +56,15 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (mAuth.getCurrentUser() != null) {
+            startActivity(new Intent(this, MapsActivity.class));
+        }
+    }
+
     public void login() {
         String email = etUsername.getText().toString();
         final String password = etPassword.getText().toString();

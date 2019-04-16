@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\steph\\Desktop\\New folder\\ParkO\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-large-v4\\values-large-v4.xml",
+            "outputFile": "C:\\Users\\steph\\Documents\\New folder\\Park-O\\ParkOApp\\ParkO\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-large-v4\\values-large-v4.xml",
             "map": [
                 {
                     "source": "C:\\Users\\steph\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\1087e04decbdec7dd0259bb82dc5008e\\res\\values-large-v4\\values-large-v4.xml",

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\steph\\Desktop\\New folder\\ParkO\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zu\\values-zu.xml",
+            "outputFile": "C:\\Users\\steph\\Documents\\New folder\\Park-O\\ParkOApp\\ParkO\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zu\\values-zu.xml",
             "map": [
                 {
                     "source": "C:\\Users\\steph\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\58e9e68e3d5d5557699e34e63c2fa44d\\res\\values-zu\\values-zu.xml",

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -13,13 +14,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.parko.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.Map;
 
 public class UserActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button signOut;
-    TextView userName;
+    TextView userName,userEmail,nric,phoneNumber;
     ImageView profilePic;
 
     @Override
@@ -33,16 +41,18 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
 
         userName = findViewById(R.id.userNameProfile);
         profilePic = findViewById(R.id.ProfilePic);
+        userEmail = findViewById(R.id.profileEmailId);
+        phoneNumber = findViewById(R.id.phoneNumber);
+        nric = findViewById(R.id.profileNRIC);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
-            // Name, email address, and profile photo Url
-            String name = user.getDisplayName();
+
             String email = user.getEmail();
             Uri photoUrl = user.getPhotoUrl();
-            String uid = user.getUid();
-            String phoneNumber = user.getPhoneNumber();
-            userName.setText(name + " (" + email + ")");
+            readData(email);
+
+            userEmail.setText(email);
             profilePic.setImageURI(photoUrl);
         }
 
@@ -78,6 +88,30 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
 
+    }
+
+    private void readData(final String email){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("users")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Map<String, Object> objectMap= document.getData();
+                                if(String.valueOf(objectMap.get("email")).equals(email)){
+                                    userName.setText((String)objectMap.get("username"));
+                                    phoneNumber.setText((String)objectMap.get("contact"));
+                                     nric.setText((String)objectMap.get("nric"));
+                                     return;
+                                }
+                            }
+                        } else {
+                            Log.w("1002", "Error getting documents.", task.getException());
+                        }
+                    }
+                });
     }
 
 }

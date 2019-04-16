@@ -8,9 +8,9 @@ import android.widget.Button;
 
 import com.example.parko.R;
 
+
 public class MainActivity extends AppCompatActivity {
     private static int SPLASH_TIME_OUT = 4000;
-    Button blogin, bRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
