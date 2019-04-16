@@ -7,6 +7,22 @@
     android:layout_height="match_parent"
     android:theme="@style/AppTheme">
 
+    <!--TITLE BAR-->
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="0dp"
+        app:fontFamily="sans-serif-black"
+        android:gravity="center"
+        android:background="@color/blueDarker"
+        android:text="Car Park Information"
+        android:textColor="@color/white"
+        android:textSize="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
         android:id="@+id/progressBar2"
@@ -26,13 +42,13 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/RView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
         android:background="@color/yellow"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
@@ -40,8 +56,6 @@
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginTop="8dp"
         android:background="?attr/selectableItemBackground"
         android:foreground="?attr/selectableItemBackground"
         app:itemBackground="@color/blue"
@@ -49,26 +63,10 @@
         app:itemTextColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/navigation_menu" />
 
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="0dp"
-        android:layout_height="72dp"
-        app:fontFamily="sans-serif-black"
-        android:gravity="center"
-        android:background="@color/blueDarker"
-        android:text="Car Park Information"
-        android:textColor="@color/white"
-        android:textSize="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>

@@ -9,8 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/row_padding_vertical"
-    android:theme="@style/AppTheme"
-    >
+    android:theme="@style/AppTheme">
 
     <TextView
         android:id="@+id/full_name"
@@ -19,7 +18,7 @@
         android:gravity="center_horizontal"
         android:text="Title:"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -31,7 +30,7 @@
         android:maxLines="1"
         android:text="Description:"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="24sp" />
 
     <TextView
@@ -44,7 +43,7 @@
         android:textAlignment="center"
         android:maxLines="1"
         android:gravity="center_horizontal"
-        android:textColor="@color/white"/>
+        android:textColor="@color/black"/>
 
     <TextView
     android:id="@+id/full_name3"
@@ -54,6 +53,6 @@
     android:layout_height="wrap_content"
     android:textAlignment="center"
     android:gravity="center_horizontal"
-    android:textColor="@color/white"/>
+    android:textColor="@color/black"/>
 
 </LinearLayout>
