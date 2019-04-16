@@ -124,12 +124,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Location location = new Location(1.346272, 103.698873);
         myPosition = new LatLng(location.getXCoordinate(), location.getYCoordinate());
         Marker Test = mMap.addMarker(new MarkerOptions().position(myPosition).title("My Location").snippet("Hi!"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(myPosition));
+        mMap.moveCamera(CameraUpdateFactory.zoomTo(15));
         Test.setVisible(true);
 
         googleMap.setTrafficEnabled(true);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            mMap.setMyLocationEnabled(true);
+//            mMap.setMyLocationEnabled(true);
         } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSION_FINE_LOCATION);

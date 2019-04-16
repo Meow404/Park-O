@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingLeft="18dp"
     android:paddingTop="18dp"
     android:paddingRight="18dp"
     android:paddingBottom="18dp"
-    android:background="@color/colorAccent">
+    android:background="@drawable/carHome"
+    android:backgroundTint="@color/blueLight"
+    android:backgroundTintMode="multiply">
 
 
     <ScrollView
@@ -20,13 +22,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
 
+            app:contentInsetEnd="0dp"
+            app:contentInsetStart="0dp">
 
+            <!--TITLE-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="sans-serif-black"
                 android:gravity="center"
                 android:text="Park'O"
                 android:textAlignment="center"
@@ -100,7 +105,7 @@
 
             <Button
                 android:id="@+id/Bforgot"
-                android:layout_width="326dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_marginTop="24dp"
