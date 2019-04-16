@@ -628,6 +628,9 @@ color background_floating_material_light
 color background_material_dark
 color background_material_light
 color blue
+color blueDarker
+color blueLight
+color blue_grey
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
 color bright_foreground_inverse_material_dark
@@ -671,10 +674,12 @@ color dim_foreground_disabled_material_dark
 color dim_foreground_disabled_material_light
 color dim_foreground_material_dark
 color dim_foreground_material_light
+color emphasis
 color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
 color foreground_material_light
+color grey
 color highlighted_text_material_dark
 color highlighted_text_material_light
 color main_color
@@ -720,6 +725,7 @@ color navy_blue
 color notification_action_color_filter
 color notification_icon_bg_color
 color notification_material_background_media_default_color
+color off
 color primary_dark_material_dark
 color primary_dark_material_light
 color primary_material_dark
@@ -740,10 +746,10 @@ color switch_thumb_material_dark
 color switch_thumb_material_light
 color switch_thumb_normal_material_dark
 color switch_thumb_normal_material_light
-color tint_color
 color tooltip_background_dark
 color tooltip_background_light
 color white
+color yellow
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
 dimen abc_action_bar_default_height_material
@@ -1054,6 +1060,7 @@ drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
 drawable car
+drawable car_home
 drawable car_park
 drawable car_park_navy
 drawable common_full_open_on_phone
@@ -1114,6 +1121,7 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable rounded_corner
+drawable section_header
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable traffic_incidents
@@ -2060,6 +2068,7 @@ style Widget_MaterialComponents_TextInputLayout_OutlinedBox
 style Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense
 style Widget_MaterialComponents_Toolbar
 style Widget_Support_CoordinatorLayout
+style sectionHeader
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
 styleable ActionBarLayout android_layout_gravity
 styleable ActionMenuItemView android_minWidth

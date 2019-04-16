@@ -8,8 +8,9 @@
     android:paddingTop="18dp"
     android:paddingRight="18dp"
     android:paddingBottom="18dp"
-    android:background="@drawable/carHome"
-    android:backgroundTint="@color/blueLight"
+    android:background="@drawable/car_home"
+    android:alpha="0.78"
+    android:backgroundTint="@color/blueDarker"
     android:backgroundTintMode="multiply">
 
 
@@ -44,16 +45,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="40dp"
-                android:backgroundTint="@color/tint_color"
+                android:backgroundTint="@color/off"
                 android:drawableLeft="@drawable/login_person"
                 android:drawablePadding="10dp"
-                android:ems="10"
                 android:hint="Username"
                 android:inputType="textEmailAddress"
-                android:maxLines="1"
                 android:padding="8dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:textColor="@color/off"
+                android:textColorHint="@color/off"
                 android:textSize="26dp" />
 
 
@@ -62,16 +61,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginTop="10dp"
-                android:backgroundTint="@color/white"
+                android:backgroundTint="@color/off"
                 android:drawableLeft="@drawable/login_lock"
                 android:drawablePadding="10dp"
-                android:ems="10"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:maxLines="1"
                 android:padding="8dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:textColor="@color/off"
+                android:textColorHint="@color/off"
 
                 android:textSize="26dp" />
 
