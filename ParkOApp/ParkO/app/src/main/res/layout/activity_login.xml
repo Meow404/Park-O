@@ -3,17 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingLeft="18dp"
     android:paddingTop="18dp"
     android:paddingRight="18dp"
     android:paddingBottom="18dp"
-    android:background="@color/colorAccent"
-    >
+    android:background="@color/colorAccent">
 
 
     <ScrollView
-        android:layout_width="411dp"
-        android:layout_height="720dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
         <LinearLayout
@@ -22,6 +22,16 @@
             android:layout_gravity="center"
             android:orientation="vertical">
 
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:text="Park'O"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="60dp" />
 
             <EditText
 
@@ -37,8 +47,8 @@
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:padding="8dp"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
                 android:textSize="26dp" />
 
 
@@ -47,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginTop="10dp"
-                android:backgroundTint="@color/tint_color"
+                android:backgroundTint="@color/white"
                 android:drawableLeft="@drawable/login_lock"
                 android:drawablePadding="10dp"
                 android:ems="10"
@@ -55,8 +65,8 @@
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:padding="8dp"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
 
                 android:textSize="26dp" />
 
@@ -64,15 +74,15 @@
                 android:layout_width="177dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:backgroundTint="@color/tint_color"
-                android:buttonTint="@color/tint_color"
+                android:backgroundTint="@color/white"
+                android:buttonTint="@color/white"
                 android:padding="5dp"
                 android:text="Remember me"
-                android:textColor="#ffffff" />
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/blogin"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_marginTop="24dp"
@@ -80,28 +90,30 @@
                 android:bottomLeftRadius="40dp"
                 android:bottomRightRadius="40dp"
                 android:clickable="true"
-
                 android:padding="16dp"
                 android:text="Log in"
                 android:textAllCaps="false"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:topLeftRadius="40dp"
                 android:topRightRadius="40dp" />
 
             <Button
                 android:id="@+id/Bforgot"
-                android:layout_width="377dp"
-                android:layout_height="31dp"
+                android:layout_width="326dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginBottom="16dp"
-                android:background="@color/colorAccent"
+                android:background="@drawable/rounded_corner"
                 android:clickable="true"
+                android:gravity="center"
                 android:padding="16dp"
-                android:text="Haven't registered yet? P"
-                android:textAppearance="@style/TextAppearance.AppCompat.Button"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff"
+                android:text="Register"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textColorLink="@color/white"
+                android:textSize="18sp"
                 android:visibility="visible" />
         </LinearLayout>
     </ScrollView>

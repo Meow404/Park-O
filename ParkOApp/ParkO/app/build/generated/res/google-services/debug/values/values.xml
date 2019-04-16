@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">388986664402-54h9evstgotmfl0l9ns1j2mbnlaqfcri.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://park-o.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">388986664402</string>
+    <string name="google_api_key" translatable="false">AIzaSyAqz_RdWzjqO9APFUJ3GWbvpZgyjeWIR88</string>
+    <string name="google_app_id" translatable="false">1:388986664402:android:f357dd3f931f663e</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAqz_RdWzjqO9APFUJ3GWbvpZgyjeWIR88</string>
+    <string name="google_storage_bucket" translatable="false">park-o.appspot.com</string>
+    <string name="project_id" translatable="false">park-o</string>
+</resources>

@@ -107,7 +107,7 @@ public class FacilitiesManager {
             for (FacilityTypes facilty : facilities) {
                 facilty.print();
             }
-            //order(facilities,location);
+            //order(traffic_incidents,location);
         } while (choice != 6);
     }
 

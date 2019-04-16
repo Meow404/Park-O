@@ -2,4 +2,11 @@
     <string name="app_name">Park\'O</string>
     <string name="title_activity_maps">Map</string>
     <string name="google_maps_api_key">AIzaSyB8DWwbq1wVkQqdA4hh7jJHePt-gUf_qJg</string>
+    <string name="open">Profile</string>
+    <string name="input_error_name">Invalid Username Entry</string>
+    <string name="input_error_email">Invalid Email Entry</string>
+    <string name="input_error_email_invalid">Invalid Email Format Entry</string>
+    <string name="input_error_password">Invalid Password Entry</string>
+    <string name="input_error_password_length">Invalid Password Length</string>
+
 </resources>

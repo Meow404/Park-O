@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "388986664402",
+    "firebase_url": "https://park-o.firebaseio.com",
+    "project_id": "park-o",
+    "storage_bucket": "park-o.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:388986664402:android:f357dd3f931f663e",
+        "android_client_info": {
+          "package_name": "com.example.parko"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "388986664402-9k9a8bt8d65qpr4kuq3fltt1kgnh8pbe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.parko",
+            "certificate_hash": "81fce55f25a0c40780747dcbb00170fc13f43371"
+          }
+        },
+        {
+          "client_id": "388986664402-54h9evstgotmfl0l9ns1j2mbnlaqfcri.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqz_RdWzjqO9APFUJ3GWbvpZgyjeWIR88"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "388986664402-54h9evstgotmfl0l9ns1j2mbnlaqfcri.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
