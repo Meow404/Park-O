@@ -70,15 +70,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private ActionBar toolbar;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-     //   myPosition = mMap.get
+        //   myPosition = mMap.get
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -94,7 +92,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     case R.id.map:
                         startActivity(new Intent(MapsActivity.this, MapsActivity.class));
                         return true;
-                    default: return true;
+                    default:
+                        return true;
                 }
             }
         });
@@ -172,7 +171,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void setMapMarkers(LatLng currentLocation) {
-
+        progressBar.setVisibility(View.VISIBLE);
         mMap.clear();
         if (set[1] == true) {
             CycleTaskRunner cycleTaskRunner = new CycleTaskRunner();
@@ -237,12 +236,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         @Override
         protected void onPostExecute(ArrayList<CyclePark> cycleParks) {
             progressBar.setVisibility(View.INVISIBLE);
-
+            mMap.addMarker(new MarkerOptions().position(myPosition).title("My Location").snippet("Hi!"));
             for (CyclePark cyclePark : cycleParks) {
 
                 LatLng bbm3 = new LatLng(cyclePark.getLocation().getXCoordinate(), cyclePark.getLocation().getYCoordinate());
                 Marker BBM3 = mMap.addMarker(new MarkerOptions()
                         .position(bbm3)
+                        .snippet("Count : "+String.valueOf(cyclePark.getRackCount()))
                         .title(cyclePark.getDescription())
                         .icon((BitmapDescriptorFactory.fromBitmap(createCustomMarker(R.drawable.cycle_park_navy, "stephen")))));
                 BBM3.setTag("CyclePark");
@@ -270,11 +270,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         @Override
         protected void onPostExecute(ArrayList<CarPark> carParks) {
-
+            progressBar.setVisibility(View.INVISIBLE);
+            mMap.addMarker(new MarkerOptions().position(myPosition).title("My Location").snippet("Hi!"));
             for (CarPark carPark : carParks) {
                 LatLng bbm3 = new LatLng(carPark.getLocation().getXCoordinate(), carPark.getLocation().getYCoordinate());
                 Marker BBM3 = mMap.addMarker(new MarkerOptions()
                         .position(bbm3)
+                        .snippet(carPark.getAddress())
                         .title(carPark.getCarParkNumber())
                         .icon((BitmapDescriptorFactory.fromBitmap(createCustomMarker(R.drawable.car_park_navy, "stephen")))));
 
@@ -305,13 +307,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         @Override
         protected void onPostExecute(ArrayList<IncidentTypes> incidents) {
+            progressBar.setVisibility(View.INVISIBLE);
             moveCamera(12);
+            mMap.addMarker(new MarkerOptions().position(myPosition).title("My Location").snippet("Hi!"));
             for (IncidentTypes incident : incidents) {
 
                 LatLng bbm3 = new LatLng(incident.getLocation().getXCoordinate(), incident.getLocation().getYCoordinate());
                 Marker BBM3 = mMap.addMarker(new MarkerOptions()
                         .position(bbm3)
-                        .title(incident.retMessage())
+                        .snippet(incident.retMessage())
+                        .title(incident.retType())
                         .icon((BitmapDescriptorFactory.fromBitmap(createCustomMarker(R.drawable.traffic_incidents_navy, "stephen")))));
                 BBM3.setTag("Incident");
             }
@@ -338,11 +343,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         @Override
         protected void onPostExecute(ArrayList<FacilityTypes> facilities) {
             moveCamera(15);
+            progressBar.setVisibility(View.INVISIBLE);
+            mMap.addMarker(new MarkerOptions().position(myPosition).title("My Location").snippet("Hi!"));
             for (FacilityTypes facility : facilities) {
 
                 LatLng bbm3 = new LatLng(facility.retLocation().getXCoordinate(), facility.retLocation().getYCoordinate());
                 Marker BBM3 = mMap.addMarker(new MarkerOptions()
                         .position(bbm3)
+                        .snippet(facility.retAddress())
                         .title(facility.retName())
                         .icon(BitmapDescriptorFactory.fromBitmap(createCustomMarker(R.drawable.information_navy, "stephen"))));
                 BBM3.setTag("Facility");

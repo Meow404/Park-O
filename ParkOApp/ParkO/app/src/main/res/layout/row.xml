@@ -45,14 +45,4 @@
         android:gravity="center_horizontal"
         android:textColor="@color/black"/>
 
-    <TextView
-    android:id="@+id/full_name3"
-    android:textSize="24sp"
-    android:text="Free Parking:"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textAlignment="center"
-    android:gravity="center_horizontal"
-    android:textColor="@color/black"/>
-
 </LinearLayout>

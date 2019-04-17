@@ -17,7 +17,6 @@ import android.widget.ProgressBar;
 import com.example.parko.CarPark.CarPark;
 import com.example.parko.CarPark.CarParkManager;
 import com.example.parko.Extra.Location.Location;
-import com.example.parko.ListAdapter;
 import com.example.parko.R;
 import com.google.android.gms.maps.model.LatLng;
 
@@ -45,7 +44,7 @@ public class ListActivity extends AppCompatActivity {
         cpm = new CarParkManager(this);
 
         progressBar1 = (ProgressBar)findViewById(R.id.progressBar2) ;
-        progressBar1.setVisibility(View.INVISIBLE);
+        progressBar1.setVisibility(View.VISIBLE);
 
 
         Location location = new Location(1.346272, 103.698873);
