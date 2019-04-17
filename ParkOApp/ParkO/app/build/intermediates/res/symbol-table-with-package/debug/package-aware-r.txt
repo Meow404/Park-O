@@ -1093,6 +1093,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable edit
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable ic_launcher_background
@@ -1133,6 +1134,7 @@ drawable user
 id ALT
 id Bforgot
 id CTRL
+id EditNRIC
 id FUNCTION
 id META
 id Map
@@ -1140,6 +1142,8 @@ id ProfilePic
 id RView
 id SHIFT
 id SYM
+id SaveEdit
+id SignOut
 id account
 id action0
 id action_bar
@@ -1207,6 +1211,8 @@ id design_navigation_view
 id dimensions
 id direct
 id disableHome
+id editButton
+id editEmailId
 id edit_query
 id emailID
 id emailText
@@ -1287,11 +1293,9 @@ id parent_matrix
 id password1
 id password2
 id percent
-id phoneNumber
+id phoneNumberEdit
 id phoneNumberText
 id pin
-id profileEmailId
-id profileNRIC
 id progressBar
 id progressBar2
 id progress_circular
@@ -1328,7 +1332,6 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
-id signOut
 id smallLabel
 id snackbar_action
 id snackbar_text
@@ -1381,7 +1384,7 @@ id uniform
 id unlabeled
 id up
 id useLogo
-id userNameProfile
+id userNameEdit
 id user_dp
 id usernameText
 id view_offset_helper
@@ -1480,6 +1483,7 @@ layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
+layout user_edit
 layout user_information
 menu navigation_menu
 mipmap ic_launcher

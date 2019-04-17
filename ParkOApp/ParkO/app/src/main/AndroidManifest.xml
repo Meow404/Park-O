@@ -45,6 +45,7 @@
         <activity android:name=".UI.Register"></activity>
         <activity android:name=".UI.ListActivity"></activity>
         <activity android:name=".UI.UserActivity"></activity>
+        <activity android:name=".UI.UserEdit"></activity>
     </application>
 
 </manifest>

@@ -21,7 +21,7 @@ public class CarParkManager {
     public CarParkManager(Context context) {
         this.context = context;
         carParks = retCarParks();
-        Log.d("1",String.valueOf(carParks.size()));
+
     }
 
     private static CarPark retCarPark(String[] carParkInformation) {
@@ -76,10 +76,8 @@ public class CarParkManager {
     }
 
     public static ArrayList<CarPark> returnUpdatedCarParkList(Location currentLocation, double constraint) {
-        Log.d("10001",String.valueOf(carParks.size()));
         ArrayList<CarPark> constrainedCarParks = getCarParksWithDistance(currentLocation, constraint);
         constrainedCarParks = CarParkUpdate.getCarParkAvailability(constrainedCarParks);
-        Log.d("1001",String.valueOf(constrainedCarParks.size()));
         if (constrainedCarParks.size() != 0)
             order(constrainedCarParks, currentLocation);
         return constrainedCarParks;

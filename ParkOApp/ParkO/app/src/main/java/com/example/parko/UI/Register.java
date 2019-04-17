@@ -22,7 +22,6 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -47,7 +46,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         password = (EditText) findViewById(R.id.password1);
         confirmPassword = (EditText) findViewById(R.id.password2);
         username = (EditText) findViewById(R.id.regUserName);
-        phoneNumber = (EditText) findViewById(R.id.phoneNumber);
+        phoneNumber = (EditText) findViewById(R.id.phoneNumberEdit);
         NRIC = (EditText) findViewById(R.id.nric);
 
 
@@ -145,12 +144,12 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         userMap.put("nric", nric);
 
 // Add a new document with a generated ID
-        db.collection("users")
-                .add(userMap)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        db.collection("users").document(email.toLowerCase())
+                .set(userMap)
+                .addOnSuccessListener(new OnSuccessListener<Void>(){
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d("1001", "DocumentSnapshot added with ID: " + documentReference.getId());
+                    public void onSuccess(Void aVoid) {
+                        Log.d("1001", "DocumentSnapshot added with ID: ");
 
                     }
                 })

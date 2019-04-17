@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,15 +19,17 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
 
 import java.util.Map;
 
 public class UserActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button signOut;
+    ImageButton edit;
     TextView userName,userEmail,nric,phoneNumber;
     ImageView profilePic;
 
@@ -35,15 +38,17 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_information);
 
-        signOut = (Button) findViewById(R.id.signOut);
+        signOut = (Button) findViewById(R.id.SignOut);
+        edit = (ImageButton) findViewById(R.id.editButton);
 
         signOut.setOnClickListener(this);
+        edit.setOnClickListener(this);
 
-        userName = findViewById(R.id.userNameProfile);
+        userName = findViewById(R.id.userNameEdit);
         profilePic = findViewById(R.id.ProfilePic);
-        userEmail = findViewById(R.id.profileEmailId);
-        phoneNumber = findViewById(R.id.phoneNumber);
-        nric = findViewById(R.id.profileNRIC);
+        userEmail = findViewById(R.id.editEmailId);
+        phoneNumber = findViewById(R.id.phoneNumberEdit);
+        nric = findViewById(R.id.EditNRIC);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -82,9 +87,12 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.signOut:
+            case R.id.SignOut:
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(this, MainActivity.class));
+                break;
+            case R.id.editButton:
+                startActivity(new Intent(this, UserEdit.class));
                 break;
         }
 
@@ -92,26 +100,32 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
 
     private void readData(final String email){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("users")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Map<String, Object> objectMap= document.getData();
-                                if(String.valueOf(objectMap.get("email")).equals(email)){
-                                    userName.setText((String)objectMap.get("username"));
-                                    phoneNumber.setText((String)objectMap.get("contact"));
-                                     nric.setText((String)objectMap.get("nric"));
-                                     return;
-                                }
-                            }
-                        } else {
-                            Log.w("1002", "Error getting documents.", task.getException());
-                        }
+        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                .setTimestampsInSnapshotsEnabled(true)
+                .build();
+        db.setFirestoreSettings(settings);
+
+
+        DocumentReference docRef = db.collection("users").document(email.toLowerCase());
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d("10001", "DocumentSnapshot data: " + document.getData());
+                        Map<String,Object> data = document.getData();
+                        userName.setText((String)data.get("username"));
+                        nric.setText((String)data.get("nric"));
+                        phoneNumber.setText((String)data.get("contact"));
+                    } else {
+                        Log.d("10002", "No such document");
                     }
-                });
+                } else {
+                    Log.d("10003", "get failed with ", task.getException());
+                }
+            }
+        });
     }
 
 }

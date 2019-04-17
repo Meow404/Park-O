@@ -72,6 +72,7 @@
         <activity android:name="com.example.parko.UI.Register" />
         <activity android:name="com.example.parko.UI.ListActivity" />
         <activity android:name="com.example.parko.UI.UserActivity" />
+        <activity android:name="com.example.parko.UI.UserEdit" />
         <!-- Needs to be explicitly declared on P+ -->
         <uses-library
             android:name="org.apache.http.legacy"
@@ -158,11 +159,6 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
-        <provider
-            android:name="com.android.tools.ir.server.InstantRunContentProvider"
-            android:authorities="com.example.parko.com.android.tools.ir.server.InstantRunContentProvider"
-            android:multiprocess="true" />
     </application>
 
 </manifest>

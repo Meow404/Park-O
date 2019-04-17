@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/yellow">
+
+    <!--TITLE-->
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="0dp"
+        android:paddingTop="8dp"
+        android:fontFamily="sans-serif-black"
+        android:background="@color/blue"
+        android:gravity="center"
+        android:text="Edit Profile"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--USER PICTURE-->
+    <ImageView
+        android:id="@+id/ProfilePic"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+    <!--tools:srcCompat="@tools:sample/avatars"     Implement later-->
+
+    <!--TEXT USERNAME-->
+    <TextView
+        android:id="@+id/usernameText"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:backgroundTint="@color/black"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="left"
+        android:text="Username"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/userNameEdit"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--USERNAME-->
+    <EditText
+        android:id="@+id/userNameEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:layout_marginLeft="108dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/black"
+        android:gravity="left"
+        android:inputType="text"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/editEmailId"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ProfilePic" />
+
+    <!--TEXT Email-->
+    <TextView
+        android:id="@+id/emailText"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:backgroundTint="@color/black"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="left"
+        android:text="Email"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editEmailId"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--EMAIL-->
+    <EditText
+        android:id="@+id/editEmailId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/black"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="left"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:inputType="textEmailAddress"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/phoneNumberEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userNameEdit" />
+
+    <!--TEXT PHONENUMBER-->
+    <TextView
+        android:id="@+id/phoneNumberText"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:backgroundTint="@color/black"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="left"
+        android:text="Phone #"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/phoneNumberEdit"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--PHONENUMBER-->
+    <EditText
+        android:id="@+id/phoneNumberEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:layout_marginLeft="108dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/black"
+        android:gravity="left"
+        android:inputType="text"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/EditNRIC"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editEmailId" />
+
+    <!--TEXT NAME-->
+    <TextView
+        android:id="@+id/nameText"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:backgroundTint="@color/black"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="left"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:text="Car Plate"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/EditNRIC"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--NAME-->
+    <EditText
+        android:id="@+id/EditNRIC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:layout_marginLeft="108dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/black"
+        android:gravity="left"
+        android:inputType="text"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/SignOut"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumberEdit" />
+
+    <!--SIGNOUT BUTTON-->
+    <Button
+        android:id="@+id/SaveEdit"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounded_corner"
+        android:clickable="true"
+        android:text="Save"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EditNRIC" />
+
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="8dp"
+        android:background="?android:attr/windowBackground"
+        android:foreground="?attr/selectableItemBackground"
+        app:itemBackground="@color/blue"
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/navigation_menu" />
+
+
+</android.support.constraint.ConstraintLayout>

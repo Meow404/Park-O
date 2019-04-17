@@ -12,11 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="0dp"
-        android:paddingTop="8dp"
-        android:fontFamily="sans-serif-black"
         android:background="@color/blue"
+        android:fontFamily="sans-serif-black"
         android:gravity="center"
+        android:paddingTop="8dp"
         android:text="Edit Profile"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -55,32 +54,32 @@
         android:paddingLeft="10dp"
         android:textColor="@color/black"
         android:textSize="18dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/userNameProfile"
+        app:layout_constraintBaseline_toBaselineOf="@+id/userNameEdit"
         app:layout_constraintStart_toStartOf="parent" />
 
     <!--USERNAME-->
     <EditText
-        android:id="@+id/userNameProfile"
-        android:layout_height="wrap_content"
+        android:id="@+id/userNameEdit"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="110dp"
         android:layout_marginLeft="108dp"
         android:layout_marginTop="35dp"
-        android:layout_marginRight="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="@color/black"
-        android:cursorVisible="false"
         android:clickable="false"
+        android:cursorVisible="false"
         android:focusable="false"
         android:focusableInTouchMode="false"
-        android:paddingStart="10dp"
-
-        android:paddingLeft="10dp"
         android:gravity="left"
+
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
         android:textColor="@color/black"
         android:textSize="18dp"
-        app:layout_constraintBottom_toTopOf="@+id/profileEmailId"
+        app:layout_constraintBottom_toTopOf="@+id/editEmailId"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ProfilePic" />
@@ -103,12 +102,12 @@
         android:paddingLeft="10dp"
         android:textColor="@color/black"
         android:textSize="18dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/profileEmailId"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editEmailId"
         app:layout_constraintStart_toStartOf="parent" />
 
     <!--EMAIL-->
     <EditText
-        android:id="@+id/profileEmailId"
+        android:id="@+id/editEmailId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="110dp"
@@ -127,8 +126,8 @@
         android:gravity="left"
         android:textColor="@color/black"
         android:textSize="18dp"
-        app:layout_constraintTop_toBottomOf="@+id/userNameProfile"
-        app:layout_constraintBottom_toTopOf="@+id/phoneNumber"
+        app:layout_constraintTop_toBottomOf="@+id/userNameEdit"
+        app:layout_constraintBottom_toTopOf="@+id/phoneNumberEdit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -150,12 +149,12 @@
         android:paddingLeft="10dp"
         android:textColor="@color/black"
         android:textSize="18dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/phoneNumber"
+        app:layout_constraintBaseline_toBaselineOf="@+id/phoneNumberEdit"
         app:layout_constraintStart_toStartOf="parent" />
 
     <!--PHONENUMBER-->
     <EditText
-        android:id="@+id/phoneNumber"
+        android:id="@+id/phoneNumberEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="110dp"
@@ -172,8 +171,8 @@
         android:gravity="left"
         android:textColor="@color/black"
         android:textSize="18dp"
-        app:layout_constraintTop_toBottomOf="@+id/profileEmailId"
-        app:layout_constraintBottom_toTopOf="@+id/profileNRIC"
+        app:layout_constraintTop_toBottomOf="@+id/editEmailId"
+        app:layout_constraintBottom_toTopOf="@+id/EditNRIC"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginLeft="108dp"
@@ -192,17 +191,17 @@
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:gravity="left"
-        android:text="Name"
         android:paddingStart="10dp"
         android:paddingLeft="10dp"
+        android:text=" Car Plate"
         android:textColor="@color/black"
         android:textSize="18dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/profileNRIC"
+        app:layout_constraintBaseline_toBaselineOf="@+id/EditNRIC"
         app:layout_constraintStart_toStartOf="parent" />
 
     <!--NAME-->
     <EditText
-        android:id="@+id/profileNRIC"
+        android:id="@+id/EditNRIC"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="110dp"
@@ -219,8 +218,8 @@
         android:gravity="left"
         android:textColor="@color/black"
         android:textSize="18dp"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNumber"
-        app:layout_constraintBottom_toTopOf="@+id/signOut"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumberEdit"
+        app:layout_constraintBottom_toTopOf="@+id/SignOut"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginLeft="108dp"
@@ -228,7 +227,7 @@
 
     <!--SIGNOUT BUTTON-->
     <Button
-        android:id="@+id/signOut"
+        android:id="@+id/SignOut"
         android:layout_width="250dp"
         android:layout_height="60dp"
         android:layout_marginLeft="8dp"
@@ -245,7 +244,7 @@
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileNRIC" />
+        app:layout_constraintTop_toBottomOf="@+id/EditNRIC" />
 
 
     <android.support.design.widget.BottomNavigationView
@@ -266,6 +265,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/navigation_menu" />
+
+    <ImageButton
+        android:id="@+id/editButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="66dp"
+        android:layout_marginLeft="66dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="136dp"
+        app:layout_constraintBottom_toTopOf="@+id/userNameEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ProfilePic"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:layout_constraintVertical_bias="0.39"
+        app:srcCompat="@drawable/edit" />
 
 
 </android.support.constraint.ConstraintLayout>

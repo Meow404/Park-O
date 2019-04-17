@@ -129,14 +129,14 @@
         android:textColorHint="@color/off"
         android:textSize="20dp"
 
-        app:layout_constraintBottom_toTopOf="@+id/phoneNumber"
+        app:layout_constraintBottom_toTopOf="@+id/phoneNumberEdit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password1" />
 
     <!--PHONE NUMBER-->
     <EditText
-        android:id="@+id/phoneNumber"
+        android:id="@+id/phoneNumberEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -173,7 +173,7 @@
         android:backgroundTint="@color/off"
 
         android:fontFamily="sans-serif-bold"
-        android:hint="NRIC"
+        android:hint="Car Plate"
         android:inputType="textPersonName"
         android:paddingLeft="12dp"
         android:textColor="@color/white"
@@ -183,7 +183,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumberEdit" />
 
     <Button
         android:id="@+id/bRegister"
